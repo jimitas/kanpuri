@@ -136,42 +136,6 @@ export default function Home() {
                 </div>
               );
             })}
-
-            {/* <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            >
-              <div className="xLine"></div>
-              <div className="yLine"></div>
-            </div>
-
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            >
-              <div className="xLine"></div>
-              <div className="yLine"></div>
-            </div>
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            >
-              <div className="yLine"></div>
-            </div>
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            >
-              <div className="yLine"></div>
-            </div>
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            ></div>
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            ></div> */}
           </section>
         </article>
       </main>
