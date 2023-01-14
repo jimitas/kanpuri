@@ -120,18 +120,62 @@ input {
 }
 
 .masu {
-  position: relative;
   display: inline-table;
   border: solid black 2px;
 }
 
-.masu2 {
+.kakusu {
+  display: flex;
+  border: solid 1px;
+  justify-content: end;
+  align-items: center;
+  padding: 0.1cm;
+}
+
+.kanji_imi {
+  /* position: "relative"; */
+  display: inline-table;
+  border-right: solid 1px;
+  border-left: solid 1px;
+}
+
+.relative {
+  position: relative;
+}
+
+.yomikata {
+  display: inline-table;
+  display: flex;
+  border: solid 1px;
+}
+
+.yomikata_head {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.yomikata_data {
+  display: flex;
+  border-inline-start: solid 1px;
+}
+
+.masu2_top {
   position: relative;
   display: inline-table;
   border: solid black 1px;
 }
 
-.verticalLine {
+.masu2 {
+  position: relative;
+  display: inline-table;
+  border-right: solid black 1px;
+  border-left: solid black 1px;
+  border-bottom: solid black 1px;
+}
+
+.yLine {
   position: absolute;
   z-index: 10;
   top: 0;
@@ -141,12 +185,12 @@ input {
   border: dotted 1px #333;
 }
 
-.horizontalLine {
+.xLine {
   position: absolute;
   z-index: 10;
   top: 50%;
   left: 0%;
-  height: 1px; /*--縦線の太さ(幅)--*/
+  height: 1px; /*--横線の太さ(幅)--*/
   width: calc(100% - 2px);
   border: dotted 1px #333;
 }

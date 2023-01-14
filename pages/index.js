@@ -47,142 +47,129 @@ export default function Home() {
             {title.g} {title.t} {title.p_1}・{title.p_2} {title.n}
           </h1>
 
-          <section style={{ display: "flex" }}>
-            <div
-              className="masu"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            >
-              <div className="verticalLine"></div>
-              <div className="horizontalLine"></div>
-            </div>
-
-            <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
-              <div>読み方</div>
-
-              <div
-                style={{
-                  position: "relative",
-                  display: "inline-table",
-                  display: "flex",
-                  width: `${Size}cm`,
-                  height: `${Size * 2.25}cm`,
-                  border: "solid 1px",
-                }}
-              >
-                <div className="verticalLine"></div>
+          <div style={{ display: "flex" }}>
+            <div>
+              <section style={{ display: "flex" }}>
                 <div
-                  style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center" }}
+                  className="masu relative"
+                  style={{
+                    marginBlockStart: `${Size * 0.25}cm`,
+                    width: `${Size}cm`,
+                    height: `${Size}cm`,
+                  }}
                 >
-                  <div style={{ flex: "1" }}></div>
-                  <div>音</div>
-                  <div style={{ flex: "2" }}></div>
-                  <div>訓</div>
-                  <div style={{ flex: "1" }}></div>
+                  <div className="xLine"></div>
+                  <div className="yLine"></div>
+                </div>
+
+                <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
+                  <div>読み方</div>
+                  <div
+                    className="yomikata relative"
+                    style={{
+                      width: `${Size}cm`,
+                      height: `${Size * 3.25}cm`,
+                    }}
+                  >
+                    <div className="yLine"></div>
+
+                    <div className="yomikata_head">
+                      <div style={{ flex: "1" }}></div>
+                      <div>音</div>
+                      <div style={{ flex: "2" }}></div>
+                      <div>訓</div>
+                      <div style={{ flex: "1" }}></div>
+                    </div>
+                    <div
+                      className="yomikagta_data"
+                      style={{
+                        display: "flex",
+                        borderInlineStart: "solid 1px",
+                      }}
+                    ></div>
+                  </div>
+                </div>
+
+                <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
+                  <small>部首・部首名</small>
+                  <div style={{ width: `${Size}cm`, height: `${Size}cm`, border: "solid 1px" }}></div>
+                </div>
+
+                <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
+                  <div>画数</div>
+                  <div
+                    className="kakusu"
+                    style={{
+                      fontSize: `${Size * 0.3}cm`,
+                      width: `${Size}cm`,
+                      height: `${Size}cm`,
+                    }}
+                  >
+                    画
+                  </div>
+                </div>
+              </section>
+
+              <section>
+                <div>○漢字の意味を書きましょう</div>
+                <div
+                  className="kanji_imi relative"
+                  style={{
+                    width: `${Size}cm`,
+                    height: `${Size * 7}cm`,
+                  }}
+                >
+                  <div className="yLine"></div>
+                </div>
+              </section>
+
+              <section style={{ display: "flex" }}>
+                {/* 後でmap出繰り返す予定 CSS変数を用いる*/}
+                <div
+                  className="masu2_top"
+                  style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
+                >
+                  <div className="xLine"></div>
+                  <div className="yLine"></div>
                 </div>
                 <div
-                  style={{
-                    display: "flex",
-                    width: `${Size}cm`,
-                    height: `${Size * 2}cm`,
-                    borderInlineStart: "solid 1px",
-                  }}
+                  className="masu2"
+                  style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
+                >
+                  <div className="xLine"></div>
+                  <div className="yLine"></div>
+                </div>
+
+                <div
+                  className="masu2"
+                  style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
+                >
+                  <div className="xLine"></div>
+                  <div className="yLine"></div>
+                </div>
+                <div
+                  className="masu2"
+                  style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
+                >
+                  <div className="yLine"></div>
+                </div>
+                <div
+                  className="masu2"
+                  style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
+                >
+                  <div className="yLine"></div>
+                </div>
+                <div
+                  className="masu2"
+                  style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
                 ></div>
-              </div>
+                <div
+                  className="masu2"
+                  style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
+                ></div>
+              </section>
             </div>
-
-            <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
-              <small>部首・部首名</small>
-              <div style={{ width: `${Size}cm`, height: `${Size}cm`, border: "solid 1px" }}></div>
-            </div>
-
-            <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
-              <div>画数</div>
-              <div
-                style={{
-                  fontSize: `${Size * 0.3}cm`,
-                  display: "flex",
-                  width: `${Size}cm`,
-                  height: `${Size}cm`,
-                  border: "solid 1px",
-                  justifyContent: "end",
-                  alignItems: "center",
-                  padding: ".1cm",
-                }}
-              >
-                画
-              </div>
-            </div>
-          </section>
-
-          <section style={{ display: "flex" }}>
-            <div>
-              <div>○漢字の意味を書きましょう</div>
-              <div
-                style={{
-                  position: "relative",
-                  display: "inline-table",
-                  width: `${Size}cm`,
-                  height: `${Size * 6}cm`,
-                  borderRight: "solid 1px",
-                  borderLeft: "solid 1px",
-                }}
-              >
-                <div className="verticalLine"></div>
-              </div>
-            </div>
-          </section>
-
-          <section style={{ display: "flex" }}>
-            {/* 後でmap出繰り返す予定 CSS変数を用いる*/}
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            >
-              <div className="verticalLine"></div>
-              <div className="horizontalLine"></div>
-            </div>
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            >
-              <div className="verticalLine"></div>
-              <div className="horizontalLine"></div>
-            </div>
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            >
-              <div className="verticalLine"></div>
-              <div className="horizontalLine"></div>
-            </div>
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            >
-              <div className="verticalLine"></div>
-              <div className="horizontalLine"></div>
-            </div>
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            >
-              <div className="verticalLine"></div>
-            </div>
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            >
-              <div className="verticalLine"></div>
-            </div>
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            ></div>
-            <div
-              className="masu2"
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-            ></div>
-          </section>
+          </div>
         </article>
       </main>
     </>
