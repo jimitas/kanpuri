@@ -35,7 +35,7 @@ export default function Home() {
         <aside>
           余白　縦
           <input className="input_S" onChange={changePaddingY} type="number" value={PaddingY} step="0.1"></input>cm
-          余白　横
+          余白　横横横
           <input className="input_S" onChange={changePaddingX} type="number" value={PaddingX} step="0.1"></input>cm
         </aside>
         <article className="print_pages" style={{ padding: `${PaddingY}cm ${PaddingX}cm` }}>

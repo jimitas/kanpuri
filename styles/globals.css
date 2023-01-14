@@ -116,6 +116,7 @@ input {
 .input_S {
   width: 50px;
   height: 30px;
+  text-align: center;
 }
 
 @media print {
