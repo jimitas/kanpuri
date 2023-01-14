@@ -125,6 +125,12 @@ input {
   border: solid black 2px;
 }
 
+.masu2 {
+  position: relative;
+  display: inline-table;
+  border: solid black 1px;
+}
+
 .verticalLine {
   position: absolute;
   z-index: 10;
@@ -132,7 +138,7 @@ input {
   left: 50%;
   width: 1px; /*--縦線の太さ(幅)--*/
   height: calc(100% - 2px);
-  border: dashed 1px #333;
+  border: dotted 1px #333;
 }
 
 .horizontalLine {
@@ -142,7 +148,7 @@ input {
   left: 0%;
   height: 1px; /*--縦線の太さ(幅)--*/
   width: calc(100% - 2px);
-  border: dashed 1px #333;
+  border: dotted 1px #333;
 }
 
 @media print {
