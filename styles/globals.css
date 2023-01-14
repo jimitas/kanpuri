@@ -119,6 +119,32 @@ input {
   text-align: center;
 }
 
+.masu {
+  position: relative;
+  display: inline-table;
+  border: solid black 2px;
+}
+
+.verticalLine {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 50%;
+  width: 1px; /*--縦線の太さ(幅)--*/
+  height: calc(100% - 2px);
+  border: dashed 1px #333;
+}
+
+.horizontalLine {
+  position: absolute;
+  z-index: 10;
+  top: 50%;
+  left: 0%;
+  height: 1px; /*--縦線の太さ(幅)--*/
+  width: calc(100% - 2px);
+  border: dashed 1px #333;
+}
+
 @media print {
   .print_pages {
     transform-origin: 0 0;

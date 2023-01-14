@@ -9,12 +9,13 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const [PaddingX, setPaddingX] = useState(1.0);
   const [PaddingY, setPaddingY] = useState(1.0);
+  const [Size, setMasuSixe] = useState(2.0);
   const title = {
     g: "三年", //grade
     t: "漢字プリント", //title
     p_1: 120, //page_1
     p_2: 121, //page_2
-    n: "名前（　　　　　　　）", //name
+    n: "名前（　　　　　　　　　　　　　　　　　　　　　）", //name
   };
   const changePaddingX = (e) => {
     setPaddingX((PaddingX) => e.target.value);
@@ -22,6 +23,7 @@ export default function Home() {
   const changePaddingY = (e) => {
     setPaddingY((PaddingY) => e.target.value);
   };
+  // 日付
 
   return (
     <>
@@ -35,13 +37,75 @@ export default function Home() {
         <aside>
           余白　縦
           <input className="input_S" onChange={changePaddingY} type="number" value={PaddingY} step="0.1"></input>cm
-          余白　横横横
+          余白　横
           <input className="input_S" onChange={changePaddingX} type="number" value={PaddingX} step="0.1"></input>cm
         </aside>
+
         <article className="print_pages" style={{ padding: `${PaddingY}cm ${PaddingX}cm` }}>
           <h1>
             {title.g} {title.t} {title.p_1}・{title.p_2} {title.n}
           </h1>
+
+          <section style={{ display: "flex" }}>
+            <div
+              className="masu"
+              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
+            >
+              <div className="verticalLine"></div>
+              <div className="horizontalLine"></div>
+            </div>
+
+            <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
+              <div>読み方</div>
+
+              <div style={{ display: "flex", width: `${Size}cm`, height: `${Size * 2.25}cm`, border: "solid 1px" }}>
+                <div style={{display:"flex",flexDirection:"column",justifyContent:"spaceBetween"}}>
+                  <div>音</div>
+                  <div>　</div>
+                  <div>訓</div>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    width: `${Size}cm`,
+                    height: `${Size * 2}cm`,
+                    borderInlineStart: "solid 1px",
+                  }}
+                >
+                </div>
+              </div>
+            </div>
+
+            <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
+              <div>部首</div>
+              <div style={{ width: `${Size}cm`, height: `${Size}cm`, border: "solid 1px" }}></div>
+            </div>
+
+            <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
+              <div>画数</div>
+              <div
+                style={{
+                  fontSize: `${Size * 0.3}cm`,
+                  display: "flex",
+                  width: `${Size}cm`,
+                  height: `${Size}cm`,
+                  border: "solid 1px",
+                  justifyContent: "end",
+                  alignItems: "center",
+                  padding: ".1cm",
+                }}
+              >
+                画
+              </div>
+            </div>
+          </section>
+
+          <section style={{ display: "flex" }}>
+            <div>
+              <div>◎漢字の意味を画きましょう</div>
+              <div style={{ width: `${Size}cm`, height: `${Size * 6}cm`, border: "solid 1px" }}></div>
+            </div>
+          </section>
         </article>
       </main>
     </>
