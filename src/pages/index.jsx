@@ -1,5 +1,8 @@
 import Link from "next/link";
-import { Title } from "../components/Title";
+import { First } from "src/components/First";
+import { Imi } from "src/components/Imi";
+import { Kurikaeshi } from "src/components/Kurikaeshi";
+import { Title } from "src/components/";
 
 import Head from "next/head";
 import Image from "next/image";
@@ -27,7 +30,6 @@ export default function Home() {
   const changeGrade = (e) => {
     setGrade((grade) => e.target.value);
   };
-  // 日付
 
   return (
     <>
@@ -66,98 +68,14 @@ export default function Home() {
           </h1> */}
           {/* <Title g={GRADE[grade - 1]} t={TITLE[grade - 1]} p_1={p_1} p_2={p_2} n={n}></Title> */}
           {/* <Title g={GRADE[grade - 1]} t={TITLE[grade - 1]} p_1={title.p_1} */}
+
           <Title g={grade} size={Size}></Title>
 
-          <section style={{ display: "flex" }}>
-            <div
-              className="masu relative"
-              style={{
-                marginBlockStart: `${Size * 0.25}cm`,
-                width: `${Size}cm`,
-                height: `${Size}cm`,
-              }}
-            >
-              <div className="xLine"></div>
-              <div className="yLine"></div>
-            </div>
+          <First g={grade} size={Size}></First>
 
-            <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
-              <div>読み方</div>
-              <div
-                className="yomikata relative"
-                style={{
-                  width: `${Size}cm`,
-                  height: `${Size * 3.25}cm`,
-                }}
-              >
-                <div className="yLine"></div>
+          <Imi g={grade} size={Size}></Imi>
 
-                <div className="yomikata_head">
-                  <div style={{ flex: "1" }}></div>
-                  <div>音</div>
-                  <div style={{ flex: "2" }}></div>
-                  <div>訓</div>
-                  <div style={{ flex: "1" }}></div>
-                </div>
-                <div
-                  className="yomikagta_data"
-                  style={{
-                    display: "flex",
-                    borderInlineStart: "solid 1px",
-                  }}
-                ></div>
-              </div>
-            </div>
-
-            <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
-              <small>部首・部首名</small>
-              <div style={{ width: `${Size}cm`, height: `${Size}cm`, border: "solid 1px" }}></div>
-            </div>
-
-            <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
-              <div>画数</div>
-              <div
-                className="kakusu"
-                style={{
-                  fontSize: `${Size * 0.3}cm`,
-                  width: `${Size}cm`,
-                  height: `${Size}cm`,
-                }}
-              >
-                画
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <div>○漢字の意味を書きましょう</div>
-            <div
-              className="kanji_imi relative"
-              style={{
-                width: `${Size}cm`,
-                height: `${Size * 7}cm`,
-              }}
-            >
-              <div className="yLine"></div>
-            </div>
-          </section>
-
-          <section style={{ display: "flex" }}>
-            {/* CSS変数を用いる*/}
-
-            {MASU_INDEX.map((MASU_INDEX) => {
-              return (
-                <div
-                  key={MASU_INDEX}
-                  className={MASU_INDEX === 1 ? "masu2_top" : "masu2"}
-                  style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
-                >
-                  {MASU_INDEX < 4 ? <div className="xLine"></div> : null}
-                  {MASU_INDEX < 6 ? <div className="yLine"></div> : null}
-                </div>
-              );
-            })}
-          </section>
+          <Kurikaeshi g={grade} size={Size}></Kurikaeshi>
         </article>
       </main>
     </>
