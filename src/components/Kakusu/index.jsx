@@ -8,7 +8,7 @@ export function Kakusu(props) {
         className="kakusu"
         style={{
           fontSize: `${Size * 0.3}cm`,
-          width: `${Size}cm`,
+          width: `${Size*1.5}cm`,
           height: `${Size}cm`,
         }}
       >

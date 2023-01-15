@@ -3,7 +3,7 @@ export function Bushu(props) {
   return (
     <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
     <small>部首・部首名</small>
-    <div style={{ width: `${Size}cm`, height: `${Size}cm`, border: "solid 1px" }}></div>
+    <div style={{ width: `${Size*1.5}cm`, height: `${Size}cm`, border: "solid 1px" }}></div>
   </div>
   );
 }

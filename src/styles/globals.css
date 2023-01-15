@@ -106,9 +106,13 @@ input {
 }
 
 .no_print {
-  font-size: 14px;
-  margin-right: 50px;
+  margin-right: 10px;
+  font-size: 1rem;
+  line-height: 2rem;
   z-index: 10;
+  top: 0;
+  width: 18rem;
+  margin-inline-start: 2rem;
 }
 
 .input_S {

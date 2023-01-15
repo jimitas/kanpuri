@@ -10,8 +10,8 @@ export function Yomikata(props) {
       <div
         className="yomikata relative"
         style={{
-          width: `${Size}cm`,
-          height: `${Size * 3.25}cm`,
+          width: `${Size * 1.5}cm`,
+          height: `${Size * 2.5}cm`,
         }}
       >
         {show === true ? (

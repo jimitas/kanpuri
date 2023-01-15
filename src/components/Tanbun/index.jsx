@@ -3,10 +3,10 @@ export function Tanbun(props) {
   const grade = props.g;
   return (
     <section style={{ paddingBlockStart: `${Size * 0.1}cm` }}>
-      {grade > 2 ? (
-        <div>○文を一つ作りましょう。</div>
+      {grade > 1 ? (
+        <div>〇文を一つ作りましょう。</div>
       ) : grade == 1 ? (
-        <div>文を　一つ　つくりましょう。</div>
+        <div>〇文を　一つ　つくりましょう。</div>
       ) : (
         <div>　</div>
       )}

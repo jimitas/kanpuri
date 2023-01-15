@@ -2,6 +2,7 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import * as se from "src/components/se";
 
 import { useEffect, useState, useRef } from "react";
 import { Title } from "src/components/Title";
@@ -19,6 +20,7 @@ import { Inter } from "@next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const PAGE = [1, 2];
   const INDEX = [1, 2, 3, 4, 5, 6];
   const [PaddingX, setPaddingX] = useState(1.0);
   const [PaddingY, setPaddingY] = useState(1.0);
@@ -42,46 +44,54 @@ export default function Home() {
 
   //後で学年に合わせた構成を設定する。
   const changeGrade = (e) => {
+    se.set.play();
     setGrade((grade) => e.target.value);
   };
 
   const changeOnkun = (e) => {
+    se.pi.play();
     setIsshow_onkun((isShow_onkun) => {
       return !isShow_onkun;
     });
   };
 
   const changeBushu = (e) => {
+    se.pi.play();
     setIsshow_bushu((isShow_bushu) => {
       return !isShow_bushu;
     });
   };
 
   const changeNaritachi = (e) => {
+    se.pi.play();
     setIsshow_naritachi((isShow_naritachi) => {
       return !isShow_naritachi;
     });
   };
 
   const changeImi = (e) => {
+    se.pi.play();
     setIsshow_imi((isShow_imi) => {
       return !isShow_imi;
     });
   };
 
   const changeKurikaeshi = (e) => {
+    se.pi.play();
     setIsShow_kurikaeshi((isShow_kurikaeshi) => {
       return !isShow_kurikaeshi;
     });
   };
 
   const changeJukugo = (e) => {
+    se.pi.play();
     setIsShow_jukugo((isShow_jukugo) => {
       return !isShow_jukugo;
     });
   };
 
   const changeTanbun = (e) => {
+    se.pi.play();
     setIsShow_tanbun((isShow_tanbun) => {
       return !isShow_tanbun;
     });
@@ -96,7 +106,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <aside className={styles.aside}>
+        <aside className="no_print">
           <form action="" style={{ border: "red solid 1px" }}>
             <div style={{ margin: "5px" }}>
               <p>学年選択</p>
@@ -160,50 +170,49 @@ export default function Home() {
             padding: `${PaddingY}cm ${PaddingX}cm`,
           }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              alignContent: "space-between",
-            }}
-          >
-            <Title g={grade} size={Size}></Title>
+          <Title g={grade} size={Size}></Title>
+          <div style={{ display: "flex", alignContent: "space-between" }}>
+            {PAGE.map((item) => {
+              return (
+                <div style={{ marginInlineEnd: "0.5cm" }}>
+                  <section style={{ display: "flex" }}>
+                    <div
+                      className="masu relative"
+                      style={{
+                        marginBlockStart: `${Size * 0.25}cm`,
+                        width: `${Size * 1.5}cm`,
+                        height: `${Size * 1.5}cm`,
+                      }}
+                    >
+                      <div className="xLine"></div>
+                      <div className="yLine"></div>
+                    </div>
 
-            <section style={{ display: "flex" }}>
-              <div
-                className="masu relative"
-                style={{
-                  marginBlockStart: `${Size * 0.25}cm`,
-                  width: `${Size}cm`,
-                  height: `${Size}cm`,
-                }}
-              >
-                <div className="xLine"></div>
-                <div className="yLine"></div>
-              </div>
+                    <Yomikata g={grade} size={Size} show={isShow_onkun}></Yomikata>
 
-              <Yomikata g={grade} size={Size} show={isShow_onkun}></Yomikata>
+                    {isShow_bushu === true ? <Bushu g={grade} size={Size}></Bushu> : null}
 
-              {isShow_bushu === true ? <Bushu g={grade} size={Size}></Bushu> : null}
+                    <Kakusu g={grade} size={Size}></Kakusu>
+                  </section>
 
-              <Kakusu g={grade} size={Size}></Kakusu>
-            </section>
+                  {isShow_naritachi === true ? <Naritachi g={grade} size={Size}></Naritachi> : null}
 
-            {isShow_naritachi === true ? <Naritachi g={grade} size={Size}></Naritachi> : null}
+                  {isShow_imi === true ? <Imi g={grade} size={Size}></Imi> : null}
 
-            {isShow_imi === true ? <Imi g={grade} size={Size}></Imi> : null}
+                  <Kurikaeshi g={grade} size={Size}></Kurikaeshi>
 
-            <Kurikaeshi g={grade} size={Size}></Kurikaeshi>
+                  {isShow_kurikaeshi === true ? <Kurikaeshi size={Size}></Kurikaeshi> : null}
 
-            {isShow_kurikaeshi === true ? <Kurikaeshi g={grade} size={Size}></Kurikaeshi> : null}
+                  <Jukugo g={grade} size={Size}></Jukugo>
 
-            <Jukugo g={grade} size={Size}></Jukugo>
+                  {isShow_jukugo === true ? <Jukugo size={Size}></Jukugo> : null}
 
-            {isShow_jukugo === true ? <Jukugo size={Size}></Jukugo> : null}
+                  <Tanbun g={grade} size={Size}></Tanbun>
 
-            <Tanbun g={grade} size={Size}></Tanbun>
-
-            {isShow_tanbun === true ? <Tanbun g={grade} size={Size}></Tanbun> : null}
+                  {isShow_tanbun === true ? <Tanbun g={grade} size={Size}></Tanbun> : null}
+                </div>
+              );
+            })}
           </div>
         </article>
       </main>

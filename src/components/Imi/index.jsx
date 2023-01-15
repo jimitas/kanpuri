@@ -4,9 +4,9 @@ export function Imi(props) {
   return (
     <section style={{ paddingBlockStart: `${Size * 0.1}cm` }}>
       {grade > 2 ? (
-        <div>○漢字の意味を書きましょう</div>
+        <div>○漢字の意味を書きましょう。</div>
       ) : grade == 1 ? (
-        <div>○かん字のいみをかきましょう</div>
+        <div>○かん字の　いみを　かきましょう。</div>
       ) : (
         <div>　</div>
       )}

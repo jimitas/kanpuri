@@ -13,8 +13,8 @@ export function Title(props) {
         fontSize: "1.5rem",
       }}
     >
-      <div>{GRADE[grade - 1]}</div>
-      <div>{TITLE[grade - 1]}</div>
+      <div>{GRADE[grade - 1]}　</div>
+      <div>{TITLE[grade - 1]}　</div>
       <div>{"　　　 ページ"}</div>
       <div>{"　　　月　　　　日　　　"}</div>
 

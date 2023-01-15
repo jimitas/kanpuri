@@ -11,7 +11,7 @@ export function Kurikaeshi(props) {
       ) : grade == 2 ? (
         <div>○書きじゅんや形に気をつけて、ていねいに書きましょう。</div>
       ) : grade == 1 ? (
-        <div>〇かきじゅんやかたちに気をつけて、ていねいにかきましょう。</div>
+        <div>〇かきじゅんや　かたちに　気をつけて、ていねいに　かきましょう。</div>
       ) : (
         <div>　</div>
       )}
