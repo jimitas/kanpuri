@@ -41,7 +41,8 @@ button {
   height: 297mm;
   width: 210mm;
   border: dotted 1px #333;
-  transform: scale(1);
+  transform-origin: top right;
+  transform: scale(.75);
 }
 
 /*最後のページは改ページを入れない*/
@@ -51,8 +52,8 @@ button {
 
 .no_print {
   margin-right: 10px;
-  font-size: 2rem;
-  line-height: 3rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
   z-index: 10;
   top: 0;
   width: 36rem;
@@ -79,7 +80,7 @@ button {
   right:-10px;
   top:-3px;
   z-index: 100;
-  color: #888;
+  color: black;
 }
 
 .nazori_2 {
@@ -87,7 +88,7 @@ button {
   right:-7px;
   top:-2px;
   z-index: 100;
-  color: #888;
+  color: black;
 }
 
 .kakusu {

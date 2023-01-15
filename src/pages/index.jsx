@@ -33,6 +33,7 @@ export default function Home() {
   const [isShow_kurikaeshi, setIsShow_kurikaeshi] = useState(false);
   const [isShow_jukugo, setIsShow_jukugo] = useState(true);
   const [isShow_tanbun, setIsShow_tanbun] = useState(false);
+  const [opacity, setOpacity] = useState(0.5);
   const check_flag = [true, false, false, false, false, false];
 
   //後で学年に合わせた構成を設定する。
@@ -42,7 +43,6 @@ export default function Home() {
   };
 
   useEffect(() => {
-    console.log(grade);
     setIsshow_onkun((isShow_onkun) => {
       if (grade > 2) {
         return true;
@@ -144,6 +144,21 @@ export default function Home() {
               })}
             </div>
           </form>
+          <p>↓ここに漢字を入力して下さい！</p>
+          <input
+            onChange={changeKanji_1}
+            style={{ width: "160px", height: "160px", fontSize: "100px", textAlign: "center" }}
+            type="text"
+            name=""
+            id=""
+          />
+          <input
+            onChange={changeKanji_2}
+            style={{ width: "160px", height: "160px", fontSize: "100px", textAlign: "center" }}
+            type="text"
+            name=""
+            id=""
+          />
           <br />
           <label>
             <input type="checkbox" name="" id="" onChange={changeOnkun} checked={isShow_onkun} />
@@ -190,20 +205,6 @@ export default function Home() {
           />
           cm
           <br />
-          <input
-            onChange={changeKanji_1}
-            style={{ width: "160px", height: "160px", fontSize: "100px", textAlign: "center" }}
-            type="text"
-            name=""
-            id=""
-          />
-          <input
-            onChange={changeKanji_2}
-            style={{ width: "160px", height: "160px", fontSize: "100px", textAlign: "center" }}
-            type="text"
-            name=""
-            id=""
-          />
           <br />
           <button
             onClick={() => {
@@ -225,6 +226,21 @@ export default function Home() {
           >
             再読み込み
           </button>
+          <br />
+          文字の濃さ
+          <input
+            style={{ width: "20rem" }}
+            onChange={(e) => {
+              se.kako.play();
+              setOpacity((opacity) => Number(e.target.value));
+            }}
+            max="1"
+            min="0"
+            step="0.01"
+            type="range"
+            name=""
+            id=""
+          />
         </aside>
 
         <article className="print_pages">
@@ -243,13 +259,18 @@ export default function Home() {
                       }}
                     >
                       {item === 1 ? (
-                        <div className="nazori" style={{ fontSize: `${Size * 1.5}cm` }}>
+                        <div className="nazori" style={{ fontSize: `${Size * 1.5}cm`, opacity: `${opacity}` }}>
                           {kanji_1}
                         </div>
                       ) : (
                         <div
                           className="nazori"
-                          style={{ position: "absolute", zIndex: "100", fontSize: `${Size * 1.5}cm` }}
+                          style={{
+                            position: "absolute",
+                            zIndex: "100",
+                            fontSize: `${Size * 1.5}cm`,
+                            opacity: `${opacity}`,
+                          }}
                         >
                           {kanji_2}
                         </div>
@@ -269,10 +290,10 @@ export default function Home() {
 
                   {isShow_imi === true ? <Imi g={grade} size={Size}></Imi> : null}
 
-                  <Kurikaeshi g={grade} size={Size} k_1={kanji_1} k_2={kanji_2} i={item}></Kurikaeshi>
+                  <Kurikaeshi g={grade} size={Size} k_1={kanji_1} k_2={kanji_2} i={item} o={opacity}></Kurikaeshi>
 
                   {isShow_kurikaeshi === true ? (
-                    <Kurikaeshi size={Size} k_1={kanji_1} k_2={kanji_2} i={item}></Kurikaeshi>
+                    <Kurikaeshi size={Size} k_1={kanji_1} k_2={kanji_2} i={item} o={opacity}></Kurikaeshi>
                   ) : null}
 
                   <Jukugo g={grade} size={Size}></Jukugo>

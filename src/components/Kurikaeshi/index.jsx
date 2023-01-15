@@ -4,6 +4,7 @@ export function Kurikaeshi(props) {
   const index = props.i;
   const kanji_1 = props.k_1;
   const kanji_2 = props.k_2;
+  const opacity = props.o;
   const MASU_INDEX = [1, 2, 3, 4, 5, 6, 7];
   console.log(kanji_1, kanji_2);
   return (
@@ -31,11 +32,11 @@ export function Kurikaeshi(props) {
               style={{ width: `${Size}cm`, height: `${Size}cm` }}
             >
               {MASU_INDEX < 4 && index === 1 ? (
-                <div className="nazori_2" style={{ fontSize: `${Size}cm` }}>
+                <div className="nazori_2" style={{ fontSize: `${Size}cm`, opacity: `${opacity}` }}>
                   {kanji_1}
                 </div>
               ) : MASU_INDEX < 4 && index === 2 ? (
-                <div className="nazori_2" style={{ fontSize: `${Size}cm` }}>
+                <div className="nazori_2" style={{ fontSize: `${Size}cm`, opacity: `${opacity}` }}>
                   {kanji_2}
                 </div>
               ) : null}
