@@ -41,16 +41,18 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <aside className={styles.aside}>
-          <form action="">
-            <p>学年選択</p>
-            {INDEX.map((grade) => {
-              return (
-                <label key={grade} For={grade}>
-                  <input onChange={changeGrade} type="radio" name="grade" id={grade} value={grade} />
-                  {grade}
-                </label>
-              );
-            })}
+          <form action="" style={{ border: "red solid 1px" }}>
+            <div style={{ margin: "5px" }}>
+              <p>学年選択</p>
+              {INDEX.map((grade) => {
+                return (
+                  <label key={grade} For={grade}>
+                    <input onChange={changeGrade} type="radio" name="grade" id={grade} value={grade} />
+                    {grade}年
+                  </label>
+                );
+              })}
+            </div>
           </form>
           <form action="">
             余白　縦
