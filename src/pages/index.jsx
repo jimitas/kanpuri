@@ -23,7 +23,7 @@ export default function Home() {
   const PAGE = [1, 2];
   const INDEX = [1, 2, 3, 4, 5, 6];
   const [grade, setGrade] = useState(4);
-  const [Size, setMasuSize] = useState(2.0);
+  const [Size, setSize] = useState(1.96);
   const [isShow_onkun, setIsshow_onkun] = useState(true);
   const [isShow_bushu, setIsshow_bushu] = useState(true);
   const [isShow_naritachi, setIsshow_naritachi] = useState(false);
@@ -88,6 +88,11 @@ export default function Home() {
     });
   };
 
+  const changeSize = (e) => {
+    se.set.play();
+    setSize((Size) => e.target.value);
+  };
+
   return (
     <>
       <Head>
@@ -98,6 +103,7 @@ export default function Home() {
       </Head>
       <main className="main">
         <aside className="no_print">
+          <h1>漢字プリント作成アプリ</h1>
           <form action="" style={{ border: "red solid 1px" }}>
             <div style={{ margin: "5px" }}>
               <p>学年選択</p>
@@ -145,6 +151,16 @@ export default function Home() {
             <input type="checkbox" name="" id="" onChange={changeTanbun} checked={isShow_tanbun} />
             短文づくりを2段にする。
           </label>
+          <br />
+          マスの大きさ
+          <input
+            onChange={changeSize}
+            style={{ width: "6rem", height: "3rem", fontSize: "1.5rem", textAlign: "right" }}
+            type="number"
+            step="0.01"
+            value={Size}
+          />
+          cm
         </aside>
 
         <article className="print_pages">

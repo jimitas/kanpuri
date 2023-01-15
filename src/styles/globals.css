@@ -19,9 +19,8 @@ input {
 
 .main {
   position: fixed;
-  margin: 20px;
-  top: 0px;
-  right: 0px;
+  top: 50px;
+  right: 50px;
   display: flex;
   flex-direction: row-reverse;
   justify-content: space-between;
@@ -33,7 +32,7 @@ input {
   writing-mode: vertical-rl;
   height: 297mm;
   width: 210mm;
-  border: solid 1px #333;
+  border: dotted 1px #333;
   transform: scale(1);
 }
 
@@ -135,6 +134,13 @@ input {
 
 @media print {
   .print_pages {
+    height: 297mm;
+    width: 210mm;
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    margin: 0;
+    padding: 0;
     transform-origin: 0 0;
     transform: scale(1);
     border: none;
@@ -142,6 +148,7 @@ input {
   .no_print {
     margin-right: auto;
     display: none;
+    background-color: antiquewhite;
   }
 }
 
