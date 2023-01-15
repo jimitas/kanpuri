@@ -1,8 +1,10 @@
 import Link from "next/link";
+import { Title } from "src/components/";
 import { First } from "src/components/First";
 import { Imi } from "src/components/Imi";
 import { Kurikaeshi } from "src/components/Kurikaeshi";
-import { Title } from "src/components/";
+import { Jukugo } from "src/components/Jukugo";
+import { Tanbun } from "src/components/Tanbun";
 
 import Head from "next/head";
 import Image from "next/image";
@@ -76,6 +78,12 @@ export default function Home() {
           <Imi g={grade} size={Size}></Imi>
 
           <Kurikaeshi g={grade} size={Size}></Kurikaeshi>
+          
+          <Jukugo g={grade} size={Size}></Jukugo>
+          
+          <Tanbun g={grade} size={Size}></Tanbun>
+
+
         </article>
       </main>
     </>
