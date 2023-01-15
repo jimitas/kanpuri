@@ -289,8 +289,6 @@ export default function Home() {
                         <div
                           className="nazori"
                           style={{
-                            position: "absolute",
-                            zIndex: "100",
                             fontSize: `${Size * 1.5}cm`,
                             right: `${ichiX - 10}px`,
                             top: `${ichiY - 3}px`,
@@ -304,8 +302,6 @@ export default function Home() {
                           className="nazori"
                           style={{
                             fontSize: `${Size * 1.5}cm`,
-                            position: "absolute",
-                            zIndex: "100",
                             right: `${ichiX - 10}px`,
                             top: `${ichiY - 3}px`,
                             opacity: `${opacity}`,

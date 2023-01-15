@@ -2,6 +2,8 @@ export function Kurikaeshi(props) {
   const Size = props.size;
   const grade = props.g;
   const index = props.i;
+  const ichiX = props.r;
+  const ichiY = props.t;
   const kanji_1 = props.k_1;
   const kanji_2 = props.k_2;
   const opacity = props.o;
@@ -35,8 +37,6 @@ export function Kurikaeshi(props) {
                 <div
                   className="nazori_2"
                   style={{
-                    position: "absolute",
-                    zIndex: "100",
                     fontSize: `${Size}cm`,
                     right: `${ichiX - 7}px`,
                     top: `${ichiY - 2}px`,
@@ -49,8 +49,6 @@ export function Kurikaeshi(props) {
                 <div
                   className="nazori_2"
                   style={{
-                    position: "absolute",
-                    zIndex: "100",
                     fontSize: `${Size}cm`,
                     right: `${ichiX - 7}px`,
                     top: `${ichiY - 2}px`,
