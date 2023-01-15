@@ -141,7 +141,7 @@ export default function Home() {
       </Head>
       <main className="main">
         <aside className="no_print">
-          <h2>地味に助かる漢字プリント作成</h2>
+          <h3>地味に助かる漢字プリント作成</h3>
           <p>PCでの使用が前提です。スマホでの確認の場合は「PC版サイトで表示する」を選択してみてください。</p>
           <form action="" style={{ border: "red solid 1px" }}>
             <div style={{ margin: "5px" }}>
