@@ -1,4 +1,9 @@
+import Head from "next/head";
+import Image from "next/image";
 import Link from "next/link";
+import styles from "../styles/Home.module.css";
+
+import { useEffect, useState, useRef } from "react";
 import { Title } from "src/components/";
 import { Yomikata } from "src/components/Yomikata";
 import { Imi } from "src/components/Imi";
@@ -9,11 +14,7 @@ import { Kurikaeshi } from "src/components/Kurikaeshi";
 import { Jukugo } from "src/components/Jukugo";
 import { Tanbun } from "src/components/Tanbun";
 
-import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "@next/font/google";
-import { useEffect, useState, useRef } from "react";
-import styles from "../styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function Home() {
   const [PaddingY, setPaddingY] = useState(1.0);
   const [grade, setGrade] = useState(1);
   const [Size, setMasuSize] = useState(2.0);
+  const [isShow_onkun, setIsshow_onkun] = useState(true);
   const [isShow_bushu, setIsshow_bushu] = useState(false);
   const [isShow_naritachi, setIsshow_naritachi] = useState(false);
   const [isShow_imi, setIsshow_imi] = useState(true);
@@ -43,6 +45,12 @@ export default function Home() {
   //後で学年に合わせた構成を設定する。
   const changeGrade = (e) => {
     setGrade((grade) => e.target.value);
+  };
+
+  const changeOnkun = (e) => {
+    setIsshow_onkun((isShow_onkun) => {
+      return !isShow_onkun;
+    });
   };
 
   const changeBushu = (e) => {
@@ -120,6 +128,11 @@ export default function Home() {
           </form>
 
           <form action="">
+            <input type="checkbox" name="" id="" onChange={changeOnkun} checked={isShow_onkun} />
+            「音読み・訓読み」を分ける。
+          </form>
+
+          <form action="">
             <input type="checkbox" name="" id="" onChange={changeBushu} checked={isShow_bushu} />
             「部首・部首名」を表示する。
           </form>
@@ -177,7 +190,7 @@ export default function Home() {
                 <div className="yLine"></div>
               </div>
 
-              <Yomikata g={grade} size={Size}></Yomikata>
+              <Yomikata g={grade} size={Size} show={isShow_onkun}></Yomikata>
 
               {isShow_bushu === true ? <Bushu g={grade} size={Size}></Bushu> : null}
 
