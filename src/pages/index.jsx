@@ -21,7 +21,13 @@ export default function Home() {
   const [PaddingY, setPaddingY] = useState(1.0);
   const [grade, setGrade] = useState(1);
   const [Size, setMasuSize] = useState(2.0);
+  const [isShow_naritachi, setIsshow_naritachi] = useState(false);
+  const [isShow_imi, setIsshow_imi] = useState(true);
+  const [isShow_kurikaeshi, setIsShow_kurikaeshi] = useState(false);
+  const [isShow_jukugo, setIsShow_jukugo] = useState(true);
+  const [isShow_tanbun, setIsShow_tanbun] = useState(false);
   const check_flag = [true, false, false, false, false, false];
+
   const changePaddingX = (e) => {
     setPaddingX((PaddingX) => e.target.value);
   };
@@ -30,6 +36,36 @@ export default function Home() {
   };
   const changeGrade = (e) => {
     setGrade((grade) => e.target.value);
+  };
+
+  const changeNaritachi = (e) => {
+    setIsshow_naritachi((isShow_naritachi) => {
+      return !isShow_naritachi;
+    });
+  };
+
+  const changeImi = (e) => {
+    setIsshow_imi((isShow_imi) => {
+      return !isShow_imi;
+    });
+  };
+
+  const changeKurikaeshi = (e) => {
+    setIsShow_kurikaeshi((isShow_kurikaeshi) => {
+      return !isShow_kurikaeshi;
+    });
+  };
+
+  const changeJukugo = (e) => {
+    setIsShow_jukugo((isShow_jukugo) => {
+      return !isShow_jukugo;
+    });
+  };
+
+  const changeTanbun = (e) => {
+    setIsShow_tanbun((isShow_tanbun) => {
+      return !isShow_tanbun;
+    });
   };
 
   return (
@@ -62,11 +98,37 @@ export default function Home() {
               })}
             </div>
           </form>
+
           <form action="">
             余白　上
             <input className="input_S" onChange={changePaddingY} type="number" value={PaddingY} step="0.1"></input>cm
             余白　右
             <input className="input_S" onChange={changePaddingX} type="number" value={PaddingX} step="0.1"></input>cm
+          </form>
+
+          <form action="">
+            <input type="checkbox" name="" id="" onChange={changeNaritachi} checked={isShow_naritachi} />
+            意味や成り立ち
+          </form>
+
+          <form action="">
+            <input type="checkbox" name="" id="" onChange={changeImi} checked={isShow_imi} />
+            漢字の意味
+          </form>
+
+          <form action="">
+            <input type="checkbox" name="" id="" onChange={changeKurikaeshi} checked={isShow_kurikaeshi} />
+            書き写しを2段にする。
+          </form>
+
+          <form action="">
+            <input type="checkbox" name="" id="" onChange={changeJukugo} checked={isShow_jukugo} />
+            熟語づくりを2段にする。
+          </form>
+
+          <form action="">
+            <input type="checkbox" name="" id="" onChange={changeTanbun} checked={isShow_tanbun} />
+            短文づくりを2段にする。
           </form>
         </aside>
 
@@ -87,17 +149,21 @@ export default function Home() {
 
             <First g={grade} size={Size}></First>
 
-            <Naritachi g={grade} size={Size}></Naritachi>
+            {isShow_naritachi === true ? <Naritachi g={grade} size={Size}></Naritachi> : null}
 
-            <Imi g={grade} size={Size}></Imi>
+            {isShow_imi === true ? <Imi g={grade} size={Size}></Imi> : null}
 
             <Kurikaeshi g={grade} size={Size}></Kurikaeshi>
 
+            {isShow_kurikaeshi === true ? <Kurikaeshi g={grade} size={Size}></Kurikaeshi> : null}
+
             <Jukugo g={grade} size={Size}></Jukugo>
 
-            <Jukugo size={Size}></Jukugo>
+            {isShow_jukugo === true ? <Jukugo size={Size}></Jukugo> : null}
 
             <Tanbun g={grade} size={Size}></Tanbun>
+
+            {isShow_tanbun === true ? <Tanbun g={grade} size={Size}></Tanbun> : null}
           </div>
         </article>
       </main>
