@@ -15,10 +15,7 @@ import styles from "../styles/Home.module.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const MASU_INDEX = [1, 2, 3, 4, 5, 6, 7];
   const INDEX = [1, 2, 3, 4, 5, 6];
-  // const GRADE = ["一年", "二年", "三年", "四年", "五年", "六年"];
-  // const TITLE = ["かん字プリント", "かん字プリント", "漢字プリント", "漢字プリント", "漢字プリント", "漢字プリント"];
   const [PaddingX, setPaddingX] = useState(1.0);
   const [PaddingY, setPaddingY] = useState(1.0);
   const [grade, setGrade] = useState(1);
