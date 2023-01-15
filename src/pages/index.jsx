@@ -22,8 +22,6 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const PAGE = [1, 2];
   const INDEX = [1, 2, 3, 4, 5, 6];
-  const [PaddingX, setPaddingX] = useState(1.0);
-  const [PaddingY, setPaddingY] = useState(1.0);
   const [grade, setGrade] = useState(4);
   const [Size, setMasuSize] = useState(2.0);
   const [isShow_onkun, setIsshow_onkun] = useState(true);
@@ -34,13 +32,6 @@ export default function Home() {
   const [isShow_jukugo, setIsShow_jukugo] = useState(true);
   const [isShow_tanbun, setIsShow_tanbun] = useState(false);
   const check_flag = [true, false, false, false, false, false];
-
-  const changePaddingX = (e) => {
-    setPaddingX((PaddingX) => e.target.value);
-  };
-  const changePaddingY = (e) => {
-    setPaddingY((PaddingY) => e.target.value);
-  };
 
   //後で学年に合わせた構成を設定する。
   const changeGrade = (e) => {
@@ -105,7 +96,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={styles.main}>
+      <main className="main">
         <aside className="no_print">
           <form action="" style={{ border: "red solid 1px" }}>
             <div style={{ margin: "5px" }}>
@@ -119,13 +110,6 @@ export default function Home() {
                 );
               })}
             </div>
-          </form>
-
-          <form action="">
-            余白　上
-            <input className="input_S" onChange={changePaddingY} type="number" value={PaddingY} step="0.1"></input>cm
-            余白　右
-            <input className="input_S" onChange={changePaddingX} type="number" value={PaddingX} step="0.1"></input>cm
           </form>
 
           <form action="">
@@ -164,12 +148,7 @@ export default function Home() {
           </form>
         </aside>
 
-        <article
-          className="print_pages"
-          style={{
-            padding: `${PaddingY}cm ${PaddingX}cm`,
-          }}
-        >
+        <article className="print_pages">
           <Title g={grade} size={Size}></Title>
           <div style={{ display: "flex", alignContent: "space-between" }}>
             {PAGE.map((item) => {
