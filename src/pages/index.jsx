@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { Title } from "../components/Title";
+
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
@@ -9,17 +12,12 @@ const inter = Inter({ subsets: ["latin"] });
 export default function Home() {
   const MASU_INDEX = [1, 2, 3, 4, 5, 6, 7];
   const INDEX = [1, 2, 3, 4, 5, 6];
-  const GRADE = ["一年", "二年", "三年", "四年", "五年", "六年"];
-  const TITLE = ["かん字プリント", "かん字プリント", "漢字プリント", "漢字プリント", "漢字プリント", "漢字プリント"];
+  // const GRADE = ["一年", "二年", "三年", "四年", "五年", "六年"];
+  // const TITLE = ["かん字プリント", "かん字プリント", "漢字プリント", "漢字プリント", "漢字プリント", "漢字プリント"];
   const [PaddingX, setPaddingX] = useState(1.0);
   const [PaddingY, setPaddingY] = useState(1.0);
   const [grade, setGrade] = useState(1);
   const [Size, setMasuSize] = useState(2.0);
-  const title = {
-    p_1: 120, //page_1
-    p_2: 121, //page_2
-    n: "名前（　　　　　　　　　　　　　　　　　　　　　）", //name
-  };
   const changePaddingX = (e) => {
     setPaddingX((PaddingX) => e.target.value);
   };
@@ -63,9 +61,12 @@ export default function Home() {
         </aside>
 
         <article className="print_pages" style={{ padding: `${PaddingY}cm ${PaddingX}cm` }}>
-          <h1>
+          {/* <h1>
             {GRADE[grade - 1]} {TITLE[grade - 1]} {title.p_1}・{title.p_2} {title.n}
-          </h1>
+          </h1> */}
+          {/* <Title g={GRADE[grade - 1]} t={TITLE[grade - 1]} p_1={p_1} p_2={p_2} n={n}></Title> */}
+          {/* <Title g={GRADE[grade - 1]} t={TITLE[grade - 1]} p_1={title.p_1} */}
+          <Title g={grade} size={Size}></Title>
 
           <section style={{ display: "flex" }}>
             <div
