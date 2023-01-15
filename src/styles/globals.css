@@ -33,6 +33,7 @@ button {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
+  overflow: scroll;
 }
 
 .print_pages {
