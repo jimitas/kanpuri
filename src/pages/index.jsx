@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { Title } from "src/components/";
-import { First } from "src/components/First";
+import { Yomikata } from "src/components/Yomikata";
 import { Imi } from "src/components/Imi";
+import { Bushu } from "src/components/Bushu";
+import { Kakusu } from "src/components/Kakusu";
 import { Naritachi } from "src/components/Naritachi";
 import { Kurikaeshi } from "src/components/Kurikaeshi";
 import { Jukugo } from "src/components/Jukugo";
@@ -17,10 +19,13 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const INDEX = [1, 2, 3, 4, 5, 6];
+  const GRADE = ["一年", "二年", "三年", "四年", "五年", "六年"];
+  const TITLE = ["かん字プリント", "かん字プリント", "漢字プリント", "漢字プリント", "漢字プリント", "漢字プリント"];
   const [PaddingX, setPaddingX] = useState(1.0);
   const [PaddingY, setPaddingY] = useState(1.0);
   const [grade, setGrade] = useState(1);
   const [Size, setMasuSize] = useState(2.0);
+  const [isShow_bushu, setIsshow_bushu] = useState(false);
   const [isShow_naritachi, setIsshow_naritachi] = useState(false);
   const [isShow_imi, setIsshow_imi] = useState(true);
   const [isShow_kurikaeshi, setIsShow_kurikaeshi] = useState(false);
@@ -34,8 +39,16 @@ export default function Home() {
   const changePaddingY = (e) => {
     setPaddingY((PaddingY) => e.target.value);
   };
+
+  //後で学年に合わせた構成を設定する。
   const changeGrade = (e) => {
     setGrade((grade) => e.target.value);
+  };
+
+  const changeBushu = (e) => {
+    setIsshow_bushu((isShow_bushu) => {
+      return !isShow_bushu;
+    });
   };
 
   const changeNaritachi = (e) => {
@@ -107,13 +120,18 @@ export default function Home() {
           </form>
 
           <form action="">
+            <input type="checkbox" name="" id="" onChange={changeBushu} checked={isShow_bushu} />
+            「部首・部首名」を表示する。
+          </form>
+
+          <form action="">
             <input type="checkbox" name="" id="" onChange={changeNaritachi} checked={isShow_naritachi} />
-            意味や成り立ち
+            「意味や成り立ち」を表示する。
           </form>
 
           <form action="">
             <input type="checkbox" name="" id="" onChange={changeImi} checked={isShow_imi} />
-            漢字の意味
+            「漢字の意味」を表示する。
           </form>
 
           <form action="">
@@ -146,8 +164,25 @@ export default function Home() {
             }}
           >
             <Title g={grade} size={Size}></Title>
+            <section style={{ display: "flex" }}>
+              <div
+                className="masu relative"
+                style={{
+                  marginBlockStart: `${Size * 0.25}cm`,
+                  width: `${Size}cm`,
+                  height: `${Size}cm`,
+                }}
+              >
+                <div className="xLine"></div>
+                <div className="yLine"></div>
+              </div>
 
-            <First g={grade} size={Size}></First>
+              <Yomikata g={grade} size={Size}></Yomikata>
+
+              {isShow_bushu === true ? <Bushu g={grade} size={Size}></Bushu> : null}
+
+              <Kakusu g={grade} size={Size}></Kakusu>
+            </section>
 
             {isShow_naritachi === true ? <Naritachi g={grade} size={Size}></Naritachi> : null}
 
