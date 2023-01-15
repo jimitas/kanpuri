@@ -141,7 +141,7 @@ export default function Home() {
       </Head>
       <main className="main">
         <aside className="no_print">
-          <h1>漢字プリント作成アプリ</h1>
+          <h3>地味に助かる漢字プリント作成</h3>
           <form action="" style={{ border: "red solid 1px" }}>
             <div style={{ margin: "5px" }}>
               <p>学年選択</p>
