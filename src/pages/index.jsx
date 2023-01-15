@@ -291,8 +291,8 @@ export default function Home() {
                           className="nazori"
                           style={{
                             fontSize: `${Size * 1.5}cm`,
-                            right: `${ichiX - 10}px`,
-                            top: `${ichiY - 3}px`,
+                            right: `${ichiX * 1.5 - 10}px`,
+                            top: `${ichiY * 1.5 - 3}px`,
                             opacity: `${opacity}`,
                           }}
                         >
