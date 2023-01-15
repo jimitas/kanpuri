@@ -1,8 +1,18 @@
 export function Jukugo(props) {
   const Size = props.size;
+  const grade = props.g;
   return (
     <div>
-      <div>○熟語を書きましょう</div>
+      {grade > 5 ? (
+        <div>○熟語を書きましょう。</div>
+      ) : grade > 3 ? (
+        <div>○じゅく語を書きましょう。</div>
+      ) : grade == 2 ? (
+        <div>○このかん字をつかったことばを書きましょう。</div>
+      ) : grade == 1 ? (
+        <div>○このかん字を　つかった　ことばを　かきましょう。</div>
+      ) : <div>　</div>}
+
       <div style={{ display: "flex", justifyContent: "space-between", width: `${Size}cm`, height: `${Size * 7}cm` }}>
         <div
           className="kanji_imi relative"

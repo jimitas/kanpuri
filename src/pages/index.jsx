@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Title } from "src/components/";
 import { First } from "src/components/First";
 import { Imi } from "src/components/Imi";
+import { Naritachi } from "src/components/Naritachi";
 import { Kurikaeshi } from "src/components/Kurikaeshi";
 import { Jukugo } from "src/components/Jukugo";
 import { Tanbun } from "src/components/Tanbun";
@@ -78,13 +79,15 @@ export default function Home() {
 
             <First g={grade} size={Size}></First>
 
+            <Naritachi g={grade} size={Size}></Naritachi>
+
             <Imi g={grade} size={Size}></Imi>
 
             <Kurikaeshi g={grade} size={Size}></Kurikaeshi>
 
             <Jukugo g={grade} size={Size}></Jukugo>
 
-            <Jukugo g={grade} size={Size}></Jukugo>
+            <Jukugo size={Size}></Jukugo>
 
             <Tanbun g={grade} size={Size}></Tanbun>
           </div>
