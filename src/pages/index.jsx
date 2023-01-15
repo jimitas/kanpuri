@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import * as se from "src/components/se";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useCallback } from "react";
 import { Title } from "src/components/Title";
 import { Yomikata } from "src/components/Yomikata";
 import { Imi } from "src/components/Imi";
@@ -38,6 +38,22 @@ export default function Home() {
     se.set.play();
     setGrade((grade) => e.target.value);
   };
+
+  useEffect(() => {
+    console.log(grade);
+    setIsshow_onkun((isShow_onkun) => {
+      if (grade > 2) {
+        return true;
+      }
+      return false;
+    });
+    setIsshow_bushu((isShow_bushu) => {
+      if (grade > 2) {
+        return true;
+      }
+      return false;
+    });
+  }, [grade]);
 
   const changeOnkun = (e) => {
     se.pi.play();
@@ -117,6 +133,7 @@ export default function Home() {
               })}
             </div>
           </form>
+          <br />
           <label>
             <input type="checkbox" name="" id="" onChange={changeOnkun} checked={isShow_onkun} />
             「音読み・訓読み」を分ける。
@@ -152,15 +169,37 @@ export default function Home() {
             短文づくりを2段にする。
           </label>
           <br />
+          <br />
           マスの大きさ
           <input
             onChange={changeSize}
-            style={{ width: "6rem", height: "3rem", fontSize: "1.5rem", textAlign: "right" }}
+            style={{ width: "8rem", height: "4rem", fontSize: "2rem", textAlign: "center" }}
             type="number"
             step="0.01"
             value={Size}
           />
           cm
+          <br />
+          <button
+            onClick={() => {
+              se.set.play();
+              const result = window.confirm("印刷ダイアログを開きますか？");
+              if (result === false) return;
+              window.print();
+            }}
+          >
+            印刷
+          </button>
+          <button
+            onClick={() => {
+              se.set.play();
+              const result = window.confirm("再読み込みして　リセットしますか？");
+              if (result === false) return;
+              location.reload();
+            }}
+          >
+            再読み込み
+          </button>
         </aside>
 
         <article className="print_pages">

@@ -13,8 +13,16 @@ body {
 
 select,
 label,
-input {
+input,
+button {
   cursor: pointer;
+}
+
+button{
+  width:140px;
+  height: 80px;
+  font-size: 24px;
+  margin:10px;
 }
 
 .main {
@@ -43,12 +51,17 @@ input {
 
 .no_print {
   margin-right: 10px;
-  font-size: 1rem;
-  line-height: 2rem;
+  font-size: 2rem;
+  line-height: 3rem;
   z-index: 10;
   top: 0;
-  width: 18rem;
+  width: 36rem;
   margin-inline-start: 2rem;
+}
+
+.no_print input {
+  width: 2rem;
+  height: 2rem;
 }
 
 .input_S {
