@@ -34,6 +34,8 @@ export default function Home() {
   const [isShow_jukugo, setIsShow_jukugo] = useState(true);
   const [isShow_tanbun, setIsShow_tanbun] = useState(false);
   const [opacity, setOpacity] = useState(0.5);
+  const [ichiX, setIchiX] = useState(0);
+  const [ichiY, setIchiY] = useState(0);
   const check_flag = [true, false, false, false, false, false];
 
   //後で学年に合わせた構成を設定する。
@@ -109,6 +111,15 @@ export default function Home() {
   const changeSize = (e) => {
     se.set.play();
     setSize((Size) => e.target.value);
+  };
+  const changeIchiX = (e) => {
+    se.kako.play();
+    setIchiX((ichiX) => e.target.value);
+  };
+
+  const changeIchiY = (e) => {
+    se.kako.play();
+    setIchiY((ichiY) => e.target.value);
   };
 
   const changeKanji_1 = (e) => {
@@ -205,6 +216,22 @@ export default function Home() {
           />
           cm
           <br />
+          左右
+          <input
+            onChange={changeIchiX}
+            style={{ width: "6rem", height: "3rem", fontSize: "1.5rem", textAlign: "center" }}
+            type="number"
+            step=".5"
+            value={ichiX}
+          />
+          上下
+          <input
+            onChange={changeIchiY}
+            style={{ width: "6rem", height: "3rem", fontSize: "1.5rem", textAlign: "center" }}
+            type="number"
+            step=".5"
+            value={ichiY}
+          />
           <br />
           <button
             onClick={() => {
@@ -259,16 +286,28 @@ export default function Home() {
                       }}
                     >
                       {item === 1 ? (
-                        <div className="nazori" style={{ fontSize: `${Size * 1.5}cm`, opacity: `${opacity}` }}>
-                          {kanji_1}
-                        </div>
-                      ) : (
                         <div
                           className="nazori"
                           style={{
                             position: "absolute",
                             zIndex: "100",
                             fontSize: `${Size * 1.5}cm`,
+                            right: `${ichiX - 10}px`,
+                            top: `${ichiY - 3}px`,
+                            opacity: `${opacity}`,
+                          }}
+                        >
+                          {kanji_1}
+                        </div>
+                      ) : (
+                        <div
+                          className="nazori"
+                          style={{
+                            fontSize: `${Size * 1.5}cm`,
+                            position: "absolute",
+                            zIndex: "100",
+                            right: `${ichiX - 10}px`,
+                            top: `${ichiY - 3}px`,
                             opacity: `${opacity}`,
                           }}
                         >
@@ -290,10 +329,27 @@ export default function Home() {
 
                   {isShow_imi === true ? <Imi g={grade} size={Size}></Imi> : null}
 
-                  <Kurikaeshi g={grade} size={Size} k_1={kanji_1} k_2={kanji_2} i={item} o={opacity}></Kurikaeshi>
+                  <Kurikaeshi
+                    g={grade}
+                    size={Size}
+                    k_1={kanji_1}
+                    k_2={kanji_2}
+                    i={item}
+                    o={opacity}
+                    t={ichiY}
+                    r={ichiX}
+                  ></Kurikaeshi>
 
                   {isShow_kurikaeshi === true ? (
-                    <Kurikaeshi size={Size} k_1={kanji_1} k_2={kanji_2} i={item} o={opacity}></Kurikaeshi>
+                    <Kurikaeshi
+                      size={Size}
+                      k_1={kanji_1}
+                      k_2={kanji_2}
+                      i={item}
+                      o={opacity}
+                      t={ichiY}
+                      r={ichiX}
+                    ></Kurikaeshi>
                   ) : null}
 
                   <Jukugo g={grade} size={Size}></Jukugo>

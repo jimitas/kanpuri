@@ -32,11 +32,31 @@ export function Kurikaeshi(props) {
               style={{ width: `${Size}cm`, height: `${Size}cm` }}
             >
               {MASU_INDEX < 4 && index === 1 ? (
-                <div className="nazori_2" style={{ fontSize: `${Size}cm`, opacity: `${opacity}` }}>
+                <div
+                  className="nazori_2"
+                  style={{
+                    position: "absolute",
+                    zIndex: "100",
+                    fontSize: `${Size}cm`,
+                    right: `${ichiX - 7}px`,
+                    top: `${ichiY - 2}px`,
+                    opacity: `${opacity}`,
+                  }}
+                >
                   {kanji_1}
                 </div>
               ) : MASU_INDEX < 4 && index === 2 ? (
-                <div className="nazori_2" style={{ fontSize: `${Size}cm`, opacity: `${opacity}` }}>
+                <div
+                  className="nazori_2"
+                  style={{
+                    position: "absolute",
+                    zIndex: "100",
+                    fontSize: `${Size}cm`,
+                    right: `${ichiX - 7}px`,
+                    top: `${ichiY - 2}px`,
+                    opacity: `${opacity}`,
+                  }}
+                >
                   {kanji_2}
                 </div>
               ) : null}
