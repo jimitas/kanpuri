@@ -111,41 +111,40 @@ export default function Home() {
               })}
             </div>
           </form>
-
-          <form action="">
+          <label>
             <input type="checkbox" name="" id="" onChange={changeOnkun} checked={isShow_onkun} />
             「音読み・訓読み」を分ける。
-          </form>
-
-          <form action="">
+          </label>
+          <br />
+          <label>
             <input type="checkbox" name="" id="" onChange={changeBushu} checked={isShow_bushu} />
             「部首・部首名」を表示する。
-          </form>
-
-          <form action="">
+          </label>
+          <br />
+          <label>
             <input type="checkbox" name="" id="" onChange={changeNaritachi} checked={isShow_naritachi} />
             「意味や成り立ち」を表示する。
-          </form>
-
-          <form action="">
+          </label>
+          <br />
+          <label>
             <input type="checkbox" name="" id="" onChange={changeImi} checked={isShow_imi} />
             「漢字の意味」を表示する。
-          </form>
-
-          <form action="">
+          </label>
+          <br />
+          <label>
             <input type="checkbox" name="" id="" onChange={changeKurikaeshi} checked={isShow_kurikaeshi} />
             書き写しを2段にする。
-          </form>
-
-          <form action="">
+          </label>
+          <br />
+          <label>
             <input type="checkbox" name="" id="" onChange={changeJukugo} checked={isShow_jukugo} />
             熟語づくりを2段にする。
-          </form>
-
-          <form action="">
+          </label>
+          <br />
+          <label>
             <input type="checkbox" name="" id="" onChange={changeTanbun} checked={isShow_tanbun} />
             短文づくりを2段にする。
-          </form>
+          </label>
         </aside>
 
         <article className="print_pages">
