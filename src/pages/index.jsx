@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "../styles/Home.module.css";
 
 import { useEffect, useState, useRef } from "react";
-import { Title } from "src/components/";
+import { Title } from "src/components/Title";
 import { Yomikata } from "src/components/Yomikata";
 import { Imi } from "src/components/Imi";
 import { Bushu } from "src/components/Bushu";
@@ -20,14 +20,12 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const INDEX = [1, 2, 3, 4, 5, 6];
-  const GRADE = ["一年", "二年", "三年", "四年", "五年", "六年"];
-  const TITLE = ["かん字プリント", "かん字プリント", "漢字プリント", "漢字プリント", "漢字プリント", "漢字プリント"];
   const [PaddingX, setPaddingX] = useState(1.0);
   const [PaddingY, setPaddingY] = useState(1.0);
-  const [grade, setGrade] = useState(1);
+  const [grade, setGrade] = useState(4);
   const [Size, setMasuSize] = useState(2.0);
   const [isShow_onkun, setIsshow_onkun] = useState(true);
-  const [isShow_bushu, setIsshow_bushu] = useState(false);
+  const [isShow_bushu, setIsshow_bushu] = useState(true);
   const [isShow_naritachi, setIsshow_naritachi] = useState(false);
   const [isShow_imi, setIsshow_imi] = useState(true);
   const [isShow_kurikaeshi, setIsShow_kurikaeshi] = useState(false);
@@ -102,18 +100,11 @@ export default function Home() {
           <form action="" style={{ border: "red solid 1px" }}>
             <div style={{ margin: "5px" }}>
               <p>学年選択</p>
-              {INDEX.map((grade) => {
+              {INDEX.map((item) => {
                 return (
-                  <label key={grade} For={grade}>
-                    <input
-                      onChange={changeGrade}
-                      type="radio"
-                      name="grade"
-                      id={grade}
-                      value={grade}
-                      checked={check_flag[grade - 1]}
-                    />
-                    {grade}年
+                  <label key={item} For={item}>
+                    <input onChange={changeGrade} type="radio" name="grade" id={item} value={item} />
+                    {item}年
                   </label>
                 );
               })}
@@ -177,6 +168,7 @@ export default function Home() {
             }}
           >
             <Title g={grade} size={Size}></Title>
+
             <section style={{ display: "flex" }}>
               <div
                 className="masu relative"

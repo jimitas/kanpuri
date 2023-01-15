@@ -2,6 +2,7 @@ export function Title(props) {
   const GRADE = ["一年", "二年", "三年", "四年", "五年", "六年"];
   const TITLE = ["かん字プリント", "かん字プリント", "漢字プリント", "漢字プリント", "漢字プリント", "漢字プリント"];
   const Size = props.size;
+  const grade = props.g;
   return (
     <div
       style={{
@@ -12,8 +13,8 @@ export function Title(props) {
         fontSize: "1.5rem",
       }}
     >
-      <div>{GRADE[props.g - 1]}</div>
-      <div>{TITLE[props.g - 1]}</div>
+      <div>{GRADE[grade - 1]}</div>
+      <div>{TITLE[grade - 1]}</div>
       <div>{"　　　 ページ"}</div>
       <div>{"　　　月　　　　日　　　"}</div>
 

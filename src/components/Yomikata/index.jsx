@@ -5,7 +5,7 @@ export function Yomikata(props) {
 
   return (
     <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
-      <div>読み方</div>
+      {grade == 1 ? <div>よみかた</div> : <div>読み方</div>}
 
       <div
         className="yomikata relative"
