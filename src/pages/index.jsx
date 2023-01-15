@@ -24,6 +24,8 @@ export default function Home() {
   const INDEX = [1, 2, 3, 4, 5, 6];
   const [grade, setGrade] = useState(4);
   const [Size, setSize] = useState(1.96);
+  const [kanji_1, setKanji_1] = useState("漢");
+  const [kanji_2, setKanji_2] = useState("字");
   const [isShow_onkun, setIsshow_onkun] = useState(true);
   const [isShow_bushu, setIsshow_bushu] = useState(true);
   const [isShow_naritachi, setIsshow_naritachi] = useState(false);
@@ -109,6 +111,15 @@ export default function Home() {
     setSize((Size) => e.target.value);
   };
 
+  const changeKanji_1 = (e) => {
+    se.set.play();
+    setKanji_1((kanji_1) => e.target.value);
+  };
+  const changeKanji_2 = (e) => {
+    se.set.play();
+    setKanji_2((kanji_2) => e.target.value);
+  };
+
   return (
     <>
       <Head>
@@ -169,7 +180,6 @@ export default function Home() {
             短文づくりを2段にする。
           </label>
           <br />
-          <br />
           マスの大きさ
           <input
             onChange={changeSize}
@@ -179,6 +189,21 @@ export default function Home() {
             value={Size}
           />
           cm
+          <br />
+          <input
+            onChange={changeKanji_1}
+            style={{ width: "160px", height: "160px", fontSize: "100px", textAlign: "center" }}
+            type="text"
+            name=""
+            id=""
+          />
+          <input
+            onChange={changeKanji_2}
+            style={{ width: "160px", height: "160px", fontSize: "100px", textAlign: "center" }}
+            type="text"
+            name=""
+            id=""
+          />
           <br />
           <button
             onClick={() => {
@@ -217,6 +242,18 @@ export default function Home() {
                         height: `${Size * 1.5}cm`,
                       }}
                     >
+                      {item === 1 ? (
+                        <div className="nazori" style={{ fontSize: `${Size * 1.5}cm` }}>
+                          {kanji_1}
+                        </div>
+                      ) : (
+                        <div
+                          className="nazori"
+                          style={{ position: "absolute", zIndex: "100", fontSize: `${Size * 1.5}cm` }}
+                        >
+                          {kanji_2}
+                        </div>
+                      )}
                       <div className="xLine"></div>
                       <div className="yLine"></div>
                     </div>
@@ -232,9 +269,11 @@ export default function Home() {
 
                   {isShow_imi === true ? <Imi g={grade} size={Size}></Imi> : null}
 
-                  <Kurikaeshi g={grade} size={Size}></Kurikaeshi>
+                  <Kurikaeshi g={grade} size={Size} k_1={kanji_1} k_2={kanji_2} i={item}></Kurikaeshi>
 
-                  {isShow_kurikaeshi === true ? <Kurikaeshi size={Size}></Kurikaeshi> : null}
+                  {isShow_kurikaeshi === true ? (
+                    <Kurikaeshi size={Size} k_1={kanji_1} k_2={kanji_2} i={item}></Kurikaeshi>
+                  ) : null}
 
                   <Jukugo g={grade} size={Size}></Jukugo>
 
