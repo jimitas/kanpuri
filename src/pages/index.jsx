@@ -7,13 +7,15 @@ import styles from "../styles/Home.module.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const ITEM = [1, 2, 3, 4, 5, 6, 7];
+  const MASU_INDEX = [1, 2, 3, 4, 5, 6, 7];
+  const INDEX = [1, 2, 3, 4, 5, 6];
+  const GRADE = ["一年", "二年", "三年", "四年", "五年", "六年"];
+  const TITLE = ["かん字プリント", "かん字プリント", "漢字プリント", "漢字プリント", "漢字プリント", "漢字プリント"];
   const [PaddingX, setPaddingX] = useState(1.0);
   const [PaddingY, setPaddingY] = useState(1.0);
+  const [grade, setGrade] = useState(1);
   const [Size, setMasuSize] = useState(2.0);
   const title = {
-    g: "三年", //grade
-    t: "漢字プリント", //title
     p_1: 120, //page_1
     p_2: 121, //page_2
     n: "名前（　　　　　　　　　　　　　　　　　　　　　）", //name
@@ -23,6 +25,9 @@ export default function Home() {
   };
   const changePaddingY = (e) => {
     setPaddingY((PaddingY) => e.target.value);
+  };
+  const changeGrade = (e) => {
+    setGrade((grade) => e.target.value);
   };
   // 日付
 
@@ -35,16 +40,29 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <aside>
-          余白　縦
-          <input className="input_S" onChange={changePaddingY} type="number" value={PaddingY} step="0.1"></input>cm
-          余白　横
-          <input className="input_S" onChange={changePaddingX} type="number" value={PaddingX} step="0.1"></input>cm
+        <aside className={styles.aside}>
+          <form action="">
+            <p>学年選択</p>
+            {INDEX.map((grade) => {
+              return (
+                <label key={grade} For={grade}>
+                  <input onChange={changeGrade} type="radio" name="grade" id={grade} value={grade} />
+                  {grade}
+                </label>
+              );
+            })}
+          </form>
+          <form action="">
+            余白　縦
+            <input className="input_S" onChange={changePaddingY} type="number" value={PaddingY} step="0.1"></input>cm
+            余白　横
+            <input className="input_S" onChange={changePaddingX} type="number" value={PaddingX} step="0.1"></input>cm
+          </form>
         </aside>
 
         <article className="print_pages" style={{ padding: `${PaddingY}cm ${PaddingX}cm` }}>
           <h1>
-            {title.g} {title.t} {title.p_1}・{title.p_2} {title.n}
+            {GRADE[grade - 1]} {TITLE[grade - 1]} {title.p_1}・{title.p_2} {title.n}
           </h1>
 
           <section style={{ display: "flex" }}>
@@ -124,15 +142,15 @@ export default function Home() {
           <section style={{ display: "flex" }}>
             {/* CSS変数を用いる*/}
 
-            {ITEM.map((item) => {
+            {MASU_INDEX.map((MASU_INDEX) => {
               return (
                 <div
-                  key={item}
-                  className={item === 1 ? "masu2_top" : "masu2"}
+                  key={MASU_INDEX}
+                  className={MASU_INDEX === 1 ? "masu2_top" : "masu2"}
                   style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
                 >
-                  {item < 4 ? <div className="xLine"></div> : null}
-                  {item < 6 ? <div className="yLine"></div> : null}
+                  {MASU_INDEX < 4 ? <div className="xLine"></div> : null}
+                  {MASU_INDEX < 6 ? <div className="yLine"></div> : null}
                 </div>
               );
             })}

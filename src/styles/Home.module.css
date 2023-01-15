@@ -1,13 +1,19 @@
 .main {
-  position: fixed;
+  position:fixed;
   top:0;
   right:0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
   justify-content: space-between;
-  align-items: center;
+  align-items:flex-start;
   padding: 2rem;
   min-height: 100vh;
+}
+
+.aside{
+  top:0;
+  width: 18rem;
+  margin-inline-start :2rem;
 }
 
 .description {
