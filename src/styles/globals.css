@@ -92,13 +92,11 @@ input {
 }
 
 .print_pages {
-  /* z-index: 1; */
   -ms-writing-mode: tb-rl;
   writing-mode: vertical-rl;
   height: 297mm;
   width: 210mm;
   border: 1px solid #333; /* transform-origin: 0 0; */
-  /* transform: scale(0.5); */
   transform: scale(1);
 }
 
@@ -155,7 +153,6 @@ input {
   justify-content: center;
   align-items: center;
 }
-
 
 .yomikata_data {
   display: flex;

@@ -61,26 +61,33 @@ export default function Home() {
           </form>
         </aside>
 
-        <article className="print_pages" style={{ padding: `${PaddingY}cm ${PaddingX}cm` }}>
-          {/* <h1>
-            {GRADE[grade - 1]} {TITLE[grade - 1]} {title.p_1}・{title.p_2} {title.n}
-          </h1> */}
-          {/* <Title g={GRADE[grade - 1]} t={TITLE[grade - 1]} p_1={p_1} p_2={p_2} n={n}></Title> */}
-          {/* <Title g={GRADE[grade - 1]} t={TITLE[grade - 1]} p_1={title.p_1} */}
+        <article
+          className="print_pages"
+          style={{
+            padding: `${PaddingY}cm ${PaddingX}cm`,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "space-between",
+            }}
+          >
+            <Title g={grade} size={Size}></Title>
 
-          <Title g={grade} size={Size}></Title>
+            <First g={grade} size={Size}></First>
 
-          <First g={grade} size={Size}></First>
+            <Imi g={grade} size={Size}></Imi>
 
-          <Imi g={grade} size={Size}></Imi>
+            <Kurikaeshi g={grade} size={Size}></Kurikaeshi>
 
-          <Kurikaeshi g={grade} size={Size}></Kurikaeshi>
-          
-          <Jukugo g={grade} size={Size}></Jukugo>
-          
-          <Tanbun g={grade} size={Size}></Tanbun>
+            <Jukugo g={grade} size={Size}></Jukugo>
 
+            <Jukugo g={grade} size={Size}></Jukugo>
 
+            <Tanbun g={grade} size={Size}></Tanbun>
+          </div>
         </article>
       </main>
     </>
