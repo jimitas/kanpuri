@@ -10,7 +10,7 @@ import { Tanbun } from "src/components/Tanbun";
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import styles from "../styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -21,6 +21,7 @@ export default function Home() {
   const [PaddingY, setPaddingY] = useState(1.0);
   const [grade, setGrade] = useState(1);
   const [Size, setMasuSize] = useState(2.0);
+  const check_flag = [true, false, false, false, false, false];
   const changePaddingX = (e) => {
     setPaddingX((PaddingX) => e.target.value);
   };
@@ -47,7 +48,14 @@ export default function Home() {
               {INDEX.map((grade) => {
                 return (
                   <label key={grade} For={grade}>
-                    <input onChange={changeGrade} type="radio" name="grade" id={grade} value={grade} />
+                    <input
+                      onChange={changeGrade}
+                      type="radio"
+                      name="grade"
+                      id={grade}
+                      value={grade}
+                      checked={check_flag[grade - 1]}
+                    />
                     {grade}年
                   </label>
                 );
@@ -55,9 +63,9 @@ export default function Home() {
             </div>
           </form>
           <form action="">
-            余白　縦
+            余白　上
             <input className="input_S" onChange={changePaddingY} type="number" value={PaddingY} step="0.1"></input>cm
-            余白　横
+            余白　右
             <input className="input_S" onChange={changePaddingX} type="number" value={PaddingX} step="0.1"></input>cm
           </form>
         </aside>

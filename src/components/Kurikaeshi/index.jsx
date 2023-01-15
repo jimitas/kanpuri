@@ -3,7 +3,7 @@ export function Kurikaeshi(props) {
   const grade = props.g;
   const MASU_INDEX = [1, 2, 3, 4, 5, 6, 7];
   return (
-    <div>
+    <div style={{ paddingBlockStart: `${Size * 0.1}cm` }}>
       {grade > 3 ? (
         <div>○筆順や形に気をつけて、ていねいに練習しましょう。</div>
       ) : grade == 3 ? (
@@ -11,8 +11,10 @@ export function Kurikaeshi(props) {
       ) : grade == 2 ? (
         <div>○書きじゅんや形に気をつけて、ていねいに書きましょう。</div>
       ) : grade == 1 ? (
-        <div>かきじゅんやかたちに気をつけて、ていねいにかきましょう。</div>
-      ) : <div>　</div>}
+        <div>〇かきじゅんやかたちに気をつけて、ていねいにかきましょう。</div>
+      ) : (
+        <div>　</div>
+      )}
       <div style={{ display: "flex" }}>
         {/* 後でCSS変数を用いるかも*/}
 
@@ -21,7 +23,7 @@ export function Kurikaeshi(props) {
             <div
               key={MASU_INDEX}
               className={MASU_INDEX === 1 ? "masu2_top" : "masu2"}
-              style={{ marginBlockStart: `${Size * 0.25}cm`, width: `${Size}cm`, height: `${Size}cm` }}
+              style={{ width: `${Size}cm`, height: `${Size}cm` }}
             >
               {MASU_INDEX < 4 ? <div className="xLine"></div> : null}
               {MASU_INDEX < 6 ? <div className="yLine"></div> : null}

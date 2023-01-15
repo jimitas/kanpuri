@@ -2,7 +2,7 @@ export function Jukugo(props) {
   const Size = props.size;
   const grade = props.g;
   return (
-    <div>
+    <div style={{ paddingBlockStart: `${Size * 0.1}cm` }}>
       {grade > 5 ? (
         <div>○熟語を書きましょう。</div>
       ) : grade > 3 ? (

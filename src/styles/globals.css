@@ -131,7 +131,6 @@ input {
 }
 
 .kanji_imi {
-  /* position: "relative"; */
   display: inline-table;
   border-right: solid 1px;
   border-left: solid 1px;
