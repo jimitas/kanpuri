@@ -135,10 +135,10 @@ export default function Home() {
         {/* asideのコンポーネント化もあるが、asideとarticleとの関わりは、このページを介した方がわかりやすいと判断し、冗長になりそうだが、ここで記述することにする。 */}
         <aside className="no_print">
           <h3>地味に助かる漢字プリント作成</h3>
-          <p>PCでの使用が前提です。スマホでの確認の場合は「PC版サイトで表示する」を選択してみてください。</p>
+          <small>PCでの使用が前提です。スマホでの確認の場合は「PC版サイトで表示する」を選択してみてください。</small>
           <form action="" style={{ border: "red solid 1px" }}>
             <div style={{ margin: "5px" }}>
-              <p>学年選択</p>
+              <p>学年選択<span style={{color:"red"}}>　はじめに選択して下さい。</span></p>
               {INDEX.map((item) => {
                 return (
                   <label key={item} For={item}>
@@ -149,7 +149,7 @@ export default function Home() {
               })}
             </div>
           </form>
-          <p>↓ここに漢字を入力して下さい！</p>
+          <p style={{color:"red"}}>↓ここに漢字を入力して下さい！</p>
           <input
             onChange={changeKanji_1}
             style={{ width: "160px", height: "160px", fontSize: "100px", textAlign: "center" }}
