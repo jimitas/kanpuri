@@ -16,10 +16,6 @@ import { Kurikaeshi } from "src/components/Kurikaeshi";
 import { Jukugo } from "src/components/Jukugo";
 import { Tanbun } from "src/components/Tanbun";
 
-import { Inter } from "@next/font/google";
-
-const inter = Inter({ subsets: ["latin"] });
-
 export default function Home() {
   const PAGE = [1, 2];
   const INDEX = [1, 2, 3, 4, 5, 6];
