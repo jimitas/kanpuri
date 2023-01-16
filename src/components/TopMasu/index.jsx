@@ -7,8 +7,6 @@ export function TopMasu(props) {
   const kanji_2 = props.k_2;
   const opacity = props.o;
 
-  console.log(Size);
-
   return (
     <div
       className="masu relative"
