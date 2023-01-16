@@ -91,7 +91,7 @@ button {
 .kakusu {
   display: flex;
   border: solid 1px;
-  justify-content: end;
+  justify-content: right;
   align-items: center;
   padding: 0.1cm;
 }

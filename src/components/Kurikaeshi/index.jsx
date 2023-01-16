@@ -8,7 +8,6 @@ export function Kurikaeshi(props) {
   const kanji_2 = props.k_2;
   const opacity = props.o;
   const MASU_INDEX = [1, 2, 3, 4, 5, 6, 7];
-  console.log(kanji_1, kanji_2);
   return (
     <div style={{ paddingBlockStart: `${Size * 0.1}cm` }}>
       {grade > 3 ? (
@@ -24,8 +23,6 @@ export function Kurikaeshi(props) {
       )}
 
       <div style={{ display: "flex" }}>
-        {/* 後でCSS変数を用いるかも*/}
-
         {MASU_INDEX.map((MASU_INDEX) => {
           return (
             <div

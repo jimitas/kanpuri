@@ -2,7 +2,7 @@ export function Tanbun(props) {
   const Size = props.size;
   const grade = props.g;
   return (
-    <section style={{ paddingBlockStart: `${Size * 0.1}cm` }}>
+    <div style={{ paddingBlockStart: `${Size * 0.1}cm` }}>
       {grade > 1 ? (
         <div>〇文を一つ作りましょう。</div>
       ) : grade == 1 ? (
@@ -19,6 +19,6 @@ export function Tanbun(props) {
       >
         <div className="yLine"></div>
       </div>
-    </section>
+    </div>
   );
 }
