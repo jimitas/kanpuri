@@ -17,6 +17,7 @@ export function Jukugo(props) {
         <div
           className="kanji_imi relative"
           style={{
+            width: `${Size}cm`,
             height: `${Size * 3.2}cm`,
           }}
         >
