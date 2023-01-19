@@ -45,7 +45,7 @@ button {
   writing-mode: vertical-rl;
   height: 297mm;
   width: 210mm;
-  border: dotted 1px #333;
+  border: dotted 0.5px #888;
   transform-origin: top right;
   transform: scale(.75);
 }
@@ -149,7 +149,7 @@ button {
   left: 50%;
   width: 1px; /*--縦線の太さ(幅)--*/
   height: calc(100% - 2px);
-  border: dotted 1px #333;
+  border: dotted 0.5px #888;
 }
 
 .xLine {
@@ -159,7 +159,7 @@ button {
   left: 0%;
   height: 1px; /*--横線の太さ(幅)--*/
   width: calc(100% - 2px);
-  border: dotted 1px #333;
+  border: dotted 0.5px #888;
 }
 
 @media print {
