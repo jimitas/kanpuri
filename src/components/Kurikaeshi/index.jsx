@@ -31,7 +31,8 @@ export function Kurikaeshi(props) {
                     right: `${positionX - 24}px`,
                     top: `${positionY - 2}px`,
                     opacity: `${opacity}`,
-                    fontFamily: '"UD デジタル 教科書体 NK-R", "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif',
+                    fontFamily: '"Times New Roman", "游明朝", "YuMincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "MS P明朝", "MS 明朝", serif',
+                    fontWeight: 'bold',
                   }}
                 >
                   {kanjiFirst}
@@ -44,7 +45,8 @@ export function Kurikaeshi(props) {
                     right: `${positionX - 24}px`,
                     top: `${positionY - 2}px`,
                     opacity: `${opacity}`,
-                    fontFamily: '"UD デジタル 教科書体 NK-R", "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif',
+                    fontFamily: '"Times New Roman", "游明朝", "YuMincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "MS P明朝", "MS 明朝", serif',
+                    fontWeight: 'bold',
                   }}
                 >
                   {kanjiSecond}

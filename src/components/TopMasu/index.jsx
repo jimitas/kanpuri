@@ -18,7 +18,8 @@ export function TopMasu(props) {
             right: `${positionX * 1.5 - 36}px`,
             top: `${positionY * 1.5 - 3}px`,
             opacity: `${opacity}`,
-            fontFamily: '"UD デジタル 教科書体 NK-R", "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif',
+            fontFamily: '"Times New Roman", "游明朝", "YuMincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "MS P明朝", "MS 明朝", serif',
+            fontWeight: 'bold',
           }}
         >
           {kanjiFirst}
@@ -31,7 +32,8 @@ export function TopMasu(props) {
             right: `${positionX - 36}px`,
             top: `${positionY - 3}px`,
             opacity: `${opacity}`,
-            fontFamily: '"UD デジタル 教科書体 NK-R", "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif',
+            fontFamily: '"Times New Roman", "游明朝", "YuMincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "MS P明朝", "MS 明朝", serif',
+            fontWeight: 'bold',
           }}
         >
           {kanjiSecond}

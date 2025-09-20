@@ -14,7 +14,7 @@ export function Title(props) {
     >
       <div>{GRADE[grade - 1]}　</div>
       <div>{TITLE[grade - 1]}　</div>
-      <div>{"　ページ"}</div>
+      <div>{"ページ"}</div>
       <div>{"　　　月　　　　日　　　"}</div>
 
       <div style={{ display: "flex" }}>
@@ -26,7 +26,7 @@ export function Title(props) {
           <div style={{ flex: "1" }}></div>
         </div>
 
-        <div style={{ marginTop: ".1cm", width: `${size}cm`, height: `${size * 6}cm`, border: "solid 2px #333" }}></div>
+        <div style={{ marginTop: ".1cm", width: `${size}cm`, height: `${size * 5.5}cm`, border: "solid 2px #333" }}></div>
       </div>
     </div>
   );
