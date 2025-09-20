@@ -26,7 +26,7 @@ export function Title(props) {
           <div style={{ flex: "1" }}></div>
         </div>
 
-        <div style={{ marginTop: ".1cm", width: `${size}cm`, height: `${size * 5.5}cm`, border: "solid 2px #333" }}></div>
+        <div style={{ marginTop: ".1cm", marginRight: "2mm", width: `${size - 0.2}cm`, height: `${size * 5.5}cm`, border: "solid 2px #333" }}></div>
       </div>
     </div>
   );
