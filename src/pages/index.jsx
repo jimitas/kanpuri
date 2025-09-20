@@ -36,6 +36,9 @@ export default function Home() {
     tanbun: false
   });
 
+  const [fontStyle, setFontStyle] = useState('mincho');
+  const [showToast, setShowToast] = useState(false);
+
   const handleGradeChange = (e) => {
     se.set.play();
     setGrade(Number(e.target.value));
@@ -49,6 +52,20 @@ export default function Home() {
       bushu: isAdvancedGrade
     }));
   }, [grade]);
+
+  useEffect(() => {
+    const hasShownToast = localStorage.getItem('hasShownGradeToast');
+    if (!hasShownToast) {
+      setShowToast(true);
+      localStorage.setItem('hasShownGradeToast', 'true');
+
+      const timer = setTimeout(() => {
+        setShowToast(false);
+      }, 4000);
+
+      return () => clearTimeout(timer);
+    }
+  }, []);
 
   const handleDisplayOptionChange = (option) => {
     se.pi.play();
@@ -88,8 +105,45 @@ export default function Home() {
     setOpacity(Number(e.target.value));
   };
 
+  const handleFontStyleChange = (e) => {
+    se.set.play();
+    setFontStyle(e.target.value);
+  };
+
   return (
     <>
+      {showToast && (
+        <div
+          style={{
+            position: 'fixed',
+            top: '20px',
+            right: '20px',
+            backgroundColor: '#FF6600',
+            color: 'white',
+            padding: '12px 16px',
+            borderRadius: '6px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
+            zIndex: 1000,
+            fontSize: '14px',
+            fontWeight: 'bold',
+            animation: 'toastSlideIn 0.3s ease-out',
+          }}
+        >
+          📚 はじめに学年を選択してください
+        </div>
+      )}
+      <style jsx>{`
+        @keyframes toastSlideIn {
+          from {
+            transform: translateX(100%);
+            opacity: 0;
+          }
+          to {
+            transform: translateX(0);
+            opacity: 1;
+          }
+        }
+      `}</style>
       <main className="main">
         {/* asideのコンポーネント化もあるが、asideとarticleとの関わりは、このページを介した方がわかりやすいと判断し、冗長になりそうだが、ここで記述することにする。 */}
         <aside className="no_print" style={{ fontSize: "14px" }}>
@@ -97,7 +151,7 @@ export default function Home() {
           <small style={{ fontSize: "12px" }}>PCでの使用が前提です。スマホでの確認の場合は「PC版サイトで表示する」を選択してみてください。</small>
           <form action="" style={{ border: "#FF6600 solid 1px", padding: "5px" }}>
             <div style={{ margin: "3px" }}>
-              <p style={{ fontSize: "14px", margin: "5px 0" }}>学年選択<span style={{color:"#FF6600", fontSize: "14px"}}>　はじめに選択して下さい。</span></p>
+              <p style={{ fontSize: "14px", margin: "5px 0" }}>学年選択<span style={{color:"#FF6600", fontSize: "14px"}}>　はじめに選択してください。</span></p>
               {GRADE_OPTIONS.map((gradeOption) => {
                 return (
                   <label key={gradeOption} htmlFor={gradeOption} style={{ fontSize: "16px", marginRight: "8px", display: "inline-flex", alignItems: "center" }}>
@@ -117,21 +171,51 @@ export default function Home() {
             </div>
           </form>
           <p style={{color:"#FF6600", fontSize: "15px", margin: "8px 0 3px 0", fontWeight: "bold"}}>↓ここに漢字を入力して下さい！</p>
-          <input
-            onChange={handleKanjiFirstChange}
-            style={{ width: "120px", height: "120px", fontSize: "88px", textAlign: "center", margin: "2px" }}
-            type="text"
-            value={kanjiFirst}
-            placeholder="漢"
-          />
-          <input
-            onChange={handleKanjiSecondChange}
-            style={{ width: "120px", height: "120px", fontSize: "88px", textAlign: "center", margin: "2px" }}
-            type="text"
-            value={kanjiSecond}
-            placeholder="字"
-          />
-          <br />
+          <div style={{ display: "flex", alignItems: "flex-start", gap: "20px" }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <div>
+                <input
+                  onChange={handleKanjiFirstChange}
+                  style={{ width: "120px", height: "120px", fontSize: "88px", textAlign: "center", margin: "2px" }}
+                  type="text"
+                  value={kanjiFirst}
+                  placeholder="漢"
+                />
+                <input
+                  onChange={handleKanjiSecondChange}
+                  style={{ width: "120px", height: "120px", fontSize: "88px", textAlign: "center", margin: "2px" }}
+                  type="text"
+                  value={kanjiSecond}
+                  placeholder="字"
+                />
+              </div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", marginTop: "0px" }}>
+              <p style={{ fontSize: "14px", margin: "0 0 8px 0", fontWeight: "bold" }}>フォントスタイル</p>
+              <label style={{ fontSize: "13px", display: "flex", alignItems: "center", margin: "3px 0", whiteSpace: "nowrap" }}>
+                <input
+                  type="radio"
+                  name="fontStyle"
+                  value="mincho"
+                  checked={fontStyle === 'mincho'}
+                  onChange={handleFontStyleChange}
+                  style={{ marginRight: "4px", transform: "scale(0.8)" }}
+                />
+                明朝体
+              </label>
+              <label style={{ fontSize: "13px", display: "flex", alignItems: "center", margin: "3px 0", whiteSpace: "nowrap" }}>
+                <input
+                  type="radio"
+                  name="fontStyle"
+                  value="gothic"
+                  checked={fontStyle === 'gothic'}
+                  onChange={handleFontStyleChange}
+                  style={{ marginRight: "4px", transform: "scale(0.8)" }}
+                />
+                ゴシック体
+              </label>
+            </div>
+          </div>
           <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
             <input
               type="checkbox"
@@ -195,6 +279,7 @@ export default function Home() {
             />
             短文づくりを2段にする。
           </label>
+
           <div style={{ fontSize: "16px", margin: "5px 0" }}>
             マスの大きさ
             <input
@@ -278,6 +363,7 @@ export default function Home() {
                       opacity={opacity}
                       positionY={positionY}
                       positionX={positionX}
+                      fontStyle={fontStyle}
                     />
 
                     <Yomikata grade={grade} size={size} show={displayOptions.onkun} />
@@ -300,6 +386,7 @@ export default function Home() {
                     opacity={opacity}
                     positionY={positionY}
                     positionX={positionX}
+                    fontStyle={fontStyle}
                   />
 
                   {displayOptions.kurikaeshi && (
@@ -311,6 +398,7 @@ export default function Home() {
                       opacity={opacity}
                       positionY={positionY}
                       positionX={positionX}
+                      fontStyle={fontStyle}
                     />
                   )}
 

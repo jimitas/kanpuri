@@ -1,5 +1,16 @@
 export function Kurikaeshi(props) {
-  const { size, grade, pageIndex, positionX, positionY, kanjiFirst, kanjiSecond, opacity } = props;
+  const { size, grade, pageIndex, positionX, positionY, kanjiFirst, kanjiSecond, opacity, fontStyle } = props;
+
+  const getFontFamily = () => {
+    if (fontStyle === 'gothic') {
+      return '"UD デジタル 教科書体 N-R", "UD デジタル 教科書体 NK-R", "游ゴシック", "YuGothic", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", "Meiryo", sans-serif';
+    }
+    return '"Times New Roman", "游明朝", "YuMincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "MS P明朝", "MS 明朝", serif';
+  };
+
+  const getFontWeight = () => {
+    return fontStyle === 'gothic' ? '500' : 'bold';
+  };
   const MASU_INDEX = [1, 2, 3, 4, 5, 6, 7];
   return (
     <div style={{ paddingBlockStart: `${size * 0.1}cm` }}>
@@ -31,8 +42,8 @@ export function Kurikaeshi(props) {
                     right: `${positionX - 24}px`,
                     top: `${positionY - 2}px`,
                     opacity: `${opacity}`,
-                    fontFamily: '"Times New Roman", "游明朝", "YuMincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "MS P明朝", "MS 明朝", serif',
-                    fontWeight: 'bold',
+                    fontFamily: getFontFamily(),
+                    fontWeight: getFontWeight(),
                   }}
                 >
                   {kanjiFirst}
@@ -45,8 +56,8 @@ export function Kurikaeshi(props) {
                     right: `${positionX - 24}px`,
                     top: `${positionY - 2}px`,
                     opacity: `${opacity}`,
-                    fontFamily: '"Times New Roman", "游明朝", "YuMincho", "ヒラギノ明朝 ProN W3", "Hiragino Mincho ProN", "HG明朝E", "MS P明朝", "MS 明朝", serif',
-                    fontWeight: 'bold',
+                    fontFamily: getFontFamily(),
+                    fontWeight: getFontWeight(),
                   }}
                 >
                   {kanjiSecond}
