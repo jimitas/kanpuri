@@ -147,9 +147,9 @@ button {
   z-index: 10;
   top: 0;
   left: 50%;
-  width: 1px; /*--縦線の太さ(幅)--*/
+  width: 0px; /*--縦線の太さ(幅)--*/
   height: calc(100% - 2px);
-  border: dotted 0.5px #888;
+  border-left: solid 1px #888;
 }
 
 .xLine {
@@ -162,23 +162,33 @@ button {
   border: dotted 0.5px #888;
 }
 
+:root {
+  --print-scale: 0.97;
+}
+
 @media print {
   .print_pages {
     height: 297mm;
     width: 210mm;
     position: fixed;
     top: 0px;
-    right: 0px;
+    left: 0px;
     margin: 0;
     padding: 0;
     transform-origin: 0 0;
-    transform: scale(1);
+    transform: scale(var(--print-scale));
     border: none;
+    box-sizing: border-box;
   }
   .no_print {
     margin-right: auto;
     display: none;
     background-color: antiquewhite;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
   }
 }
 

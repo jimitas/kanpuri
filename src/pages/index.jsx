@@ -38,6 +38,7 @@ export default function Home() {
 
   const [fontStyle, setFontStyle] = useState('mincho');
   const [showToast, setShowToast] = useState(false);
+  const [printScale, setPrintScale] = useState(0.97);
 
   const handleGradeChange = (e) => {
     se.set.play();
@@ -66,6 +67,11 @@ export default function Home() {
       return () => clearTimeout(timer);
     }
   }, []);
+
+  useEffect(() => {
+    // 初期化時にCSS変数を設定
+    document.documentElement.style.setProperty('--print-scale', printScale);
+  }, [printScale]);
 
   const handleDisplayOptionChange = (option) => {
     se.pi.play();
@@ -110,6 +116,15 @@ export default function Home() {
     setFontStyle(e.target.value);
   };
 
+  const handlePrintScaleChange = (e) => {
+    se.kako.play();
+    const newScale = Number(e.target.value);
+    setPrintScale(newScale);
+
+    // CSS変数を動的に更新
+    document.documentElement.style.setProperty('--print-scale', newScale);
+  };
+
   return (
     <>
       {showToast && (
@@ -129,7 +144,8 @@ export default function Home() {
             animation: 'toastSlideIn 0.3s ease-out',
           }}
         >
-          📚 はじめに学年を選択してください
+          📚 はじめに学年を選択してください<br />
+          🖨️ 印刷時の縮小率を変更できます。
         </div>
       )}
       <style jsx>{`
@@ -216,69 +232,88 @@ export default function Home() {
               </label>
             </div>
           </div>
-          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
-            <input
-              type="checkbox"
-              onChange={() => handleDisplayOptionChange('onkun')}
-              checked={displayOptions.onkun}
-              style={{ marginRight: "5px", transform: "scale(0.8)" }}
-            />
-            「音読み・訓読み」を分ける。
-          </label>
-          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
-            <input
-              type="checkbox"
-              onChange={() => handleDisplayOptionChange('bushu')}
-              checked={displayOptions.bushu}
-              style={{ marginRight: "5px", transform: "scale(0.8)" }}
-            />
-            「部首・部首名」を表示する。
-          </label>
-          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
-            <input
-              type="checkbox"
-              onChange={() => handleDisplayOptionChange('naritachi')}
-              checked={displayOptions.naritachi}
-              style={{ marginRight: "5px", transform: "scale(0.8)" }}
-            />
-            「意味や成り立ち」を表示する。
-          </label>
-          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
-            <input
-              type="checkbox"
-              onChange={() => handleDisplayOptionChange('imi')}
-              checked={displayOptions.imi}
-              style={{ marginRight: "5px", transform: "scale(0.8)" }}
-            />
-            「漢字の意味」を表示する。
-          </label>
-          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
-            <input
-              type="checkbox"
-              onChange={() => handleDisplayOptionChange('kurikaeshi')}
-              checked={displayOptions.kurikaeshi}
-              style={{ marginRight: "5px", transform: "scale(0.8)" }}
-            />
-            書き写しを2段にする。
-          </label>
-          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
-            <input
-              type="checkbox"
-              onChange={() => handleDisplayOptionChange('jukugo')}
-              checked={displayOptions.jukugo}
-              style={{ marginRight: "5px", transform: "scale(0.8)" }}
-            />
-            熟語づくりを2段にする。
-          </label>
-          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
-            <input
-              type="checkbox"
-              onChange={() => handleDisplayOptionChange('tanbun')}
-              checked={displayOptions.tanbun}
-              style={{ marginRight: "5px", transform: "scale(0.8)" }}
-            />
-            短文づくりを2段にする。
-          </label>
+          <div style={{ display: "flex", gap: "20px", alignItems: "flex-start" }}>
+            <div style={{ width: "fit-content" }}>
+              <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+                <input
+                  type="checkbox"
+                  onChange={() => handleDisplayOptionChange('onkun')}
+                  checked={displayOptions.onkun}
+                  style={{ marginRight: "5px", transform: "scale(0.8)" }}
+                />
+                「音読み・訓読み」を分ける。
+              </label>
+              <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+                <input
+                  type="checkbox"
+                  onChange={() => handleDisplayOptionChange('bushu')}
+                  checked={displayOptions.bushu}
+                  style={{ marginRight: "5px", transform: "scale(0.8)" }}
+                />
+                「部首・部首名」を表示する。
+              </label>
+              <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+                <input
+                  type="checkbox"
+                  onChange={() => handleDisplayOptionChange('naritachi')}
+                  checked={displayOptions.naritachi}
+                  style={{ marginRight: "5px", transform: "scale(0.8)" }}
+                />
+                「意味や成り立ち」を表示する。
+              </label>
+              <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+                <input
+                  type="checkbox"
+                  onChange={() => handleDisplayOptionChange('imi')}
+                  checked={displayOptions.imi}
+                  style={{ marginRight: "5px", transform: "scale(0.8)" }}
+                />
+                「漢字の意味」を表示する。
+              </label>
+              <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+                <input
+                  type="checkbox"
+                  onChange={() => handleDisplayOptionChange('kurikaeshi')}
+                  checked={displayOptions.kurikaeshi}
+                  style={{ marginRight: "5px", transform: "scale(0.8)" }}
+                />
+                書き写しを2段にする。
+              </label>
+              <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+                <input
+                  type="checkbox"
+                  onChange={() => handleDisplayOptionChange('jukugo')}
+                  checked={displayOptions.jukugo}
+                  style={{ marginRight: "5px", transform: "scale(0.8)" }}
+                />
+                熟語づくりを2段にする。
+              </label>
+              <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+                <input
+                  type="checkbox"
+                  onChange={() => handleDisplayOptionChange('tanbun')}
+                  checked={displayOptions.tanbun}
+                  style={{ marginRight: "5px", transform: "scale(0.8)" }}
+                />
+                短文づくりを2段にする。
+              </label>
+            </div>
+            <div style={{ minWidth: "160px", alignSelf: "flex-start" }}>
+              <div style={{ fontSize: "14px", margin: "0 0 8px 0", fontWeight: "bold", textAlign: "left" }}>印刷縮小率</div>
+              <div style={{ fontSize: "13px", margin: "5px 0", color: "#666", textAlign: "left" }}>
+                {Math.round(printScale * 100)}%
+              </div>
+              <input
+                style={{ width: "140px", margin: "2px 0", display: "block" }}
+                onChange={handlePrintScaleChange}
+                max="1"
+                min="0.7"
+                step="0.01"
+                type="range"
+                value={printScale}
+              />
+            </div>
+          </div>
 
           <div style={{ fontSize: "16px", margin: "5px 0" }}>
             マスの大きさ
