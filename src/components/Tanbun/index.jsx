@@ -1,11 +1,10 @@
 export function Tanbun(props) {
-  const Size = props.size;
-  const grade = props.g;
+  const { size, grade } = props;
   return (
-    <div style={{ paddingBlockStart: `${Size * 0.1}cm` }}>
+    <div style={{ paddingBlockStart: `${size * 0.1}cm` }}>
       {grade > 1 ? (
         <div>〇文を一つ作りましょう。</div>
-      ) : grade == 1 ? (
+      ) : grade === 1 ? (
         <div>〇文を　一つ　つくりましょう。</div>
       ) : (
         <div>　</div>
@@ -13,8 +12,8 @@ export function Tanbun(props) {
       <div
         className="kanji_imi relative"
         style={{
-          width: `${Size}cm`,
-          height: `${Size * 7}cm`,
+          width: `${size}cm`,
+          height: `${size * 7}cm`,
         }}
       >
         <div className="yLine"></div>

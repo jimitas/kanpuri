@@ -1,6 +1,4 @@
 import Head from "next/head";
-// import Image from "next/image";
-import Link from "next/link";
 import styles from "../styles/Home.module.css";
 import * as se from "src/components/se";
 
@@ -17,312 +15,312 @@ import { Jukugo } from "src/components/Jukugo";
 import { Tanbun } from "src/components/Tanbun";
 
 export default function Home() {
-  const PAGE = [1, 2];
-  const INDEX = [1, 2, 3, 4, 5, 6];
-  const [grade, setGrade] = useState(4);
-  const [Size, setSize] = useState(1.96);
-  const [kanji_1, setKanji_1] = useState("漢");
-  const [kanji_2, setKanji_2] = useState("字");
-  const [isShow_onkun, setIsshow_onkun] = useState(true);
-  const [isShow_bushu, setIsshow_bushu] = useState(true);
-  const [isShow_naritachi, setIsshow_naritachi] = useState(false);
-  const [isShow_imi, setIsshow_imi] = useState(true);
-  const [isShow_kurikaeshi, setIsShow_kurikaeshi] = useState(false);
-  const [isShow_jukugo, setIsShow_jukugo] = useState(true);
-  const [isShow_tanbun, setIsShow_tanbun] = useState(false);
-  const [opacity, setOpacity] = useState(0.5);
-  const [ichiX, setIchiX] = useState(0);
-  const [ichiY, setIchiY] = useState(0);
+  const PAGES = [1, 2];
+  const GRADE_OPTIONS = [1, 2, 3, 4, 5, 6];
 
-  //後で学年に合わせた構成を設定する。
-  const changeGrade = (e) => {
+  const [grade, setGrade] = useState(4);
+  const [size, setSize] = useState(1.96);
+  const [kanjiFirst, setKanjiFirst] = useState("漢");
+  const [kanjiSecond, setKanjiSecond] = useState("字");
+  const [opacity, setOpacity] = useState(0.5);
+  const [positionX, setPositionX] = useState(0);
+  const [positionY, setPositionY] = useState(0);
+
+  const [displayOptions, setDisplayOptions] = useState({
+    onkun: true,
+    bushu: true,
+    naritachi: false,
+    imi: true,
+    kurikaeshi: false,
+    jukugo: true,
+    tanbun: false
+  });
+
+  const handleGradeChange = (e) => {
     se.set.play();
-    setGrade((grade) => e.target.value);
+    setGrade(Number(e.target.value));
   };
 
   useEffect(() => {
-    setIsshow_onkun((isShow_onkun) => {
-      if (grade > 2) {
-        return true;
-      }
-      return false;
-    });
-    setIsshow_bushu((isShow_bushu) => {
-      if (grade > 2) {
-        return true;
-      }
-      return false;
-    });
+    const isAdvancedGrade = grade > 2;
+    setDisplayOptions(prev => ({
+      ...prev,
+      onkun: isAdvancedGrade,
+      bushu: isAdvancedGrade
+    }));
   }, [grade]);
 
-  const changeOnkun = (e) => {
+  const handleDisplayOptionChange = (option) => {
     se.pi.play();
-    setIsshow_onkun((isShow_onkun) => {
-      return !isShow_onkun;
-    });
+    setDisplayOptions(prev => ({
+      ...prev,
+      [option]: !prev[option]
+    }));
   };
 
-  const changeBushu = (e) => {
-    se.pi.play();
-    setIsshow_bushu((isShow_bushu) => {
-      return !isShow_bushu;
-    });
-  };
-
-  const changeNaritachi = (e) => {
-    se.pi.play();
-    setIsshow_naritachi((isShow_naritachi) => {
-      return !isShow_naritachi;
-    });
-  };
-
-  const changeImi = (e) => {
-    se.pi.play();
-    setIsshow_imi((isShow_imi) => {
-      return !isShow_imi;
-    });
-  };
-
-  const changeKurikaeshi = (e) => {
-    se.pi.play();
-    setIsShow_kurikaeshi((isShow_kurikaeshi) => {
-      return !isShow_kurikaeshi;
-    });
-  };
-
-  const changeJukugo = (e) => {
-    se.pi.play();
-    setIsShow_jukugo((isShow_jukugo) => {
-      return !isShow_jukugo;
-    });
-  };
-
-  const changeTanbun = (e) => {
-    se.pi.play();
-    setIsShow_tanbun((isShow_tanbun) => {
-      return !isShow_tanbun;
-    });
-  };
-
-  const changeSize = (e) => {
+  const handleSizeChange = (e) => {
     se.set.play();
-    setSize((Size) => e.target.value);
+    setSize(Number(e.target.value));
   };
 
-  const changeIchiX = (e) => {
+  const handlePositionXChange = (e) => {
     se.kako.play();
-    setIchiX((ichiX) => e.target.value);
+    setPositionX(Number(e.target.value));
   };
 
-  const changeIchiY = (e) => {
+  const handlePositionYChange = (e) => {
     se.kako.play();
-    setIchiY((ichiY) => e.target.value);
+    setPositionY(Number(e.target.value));
   };
 
-  const changeKanji_1 = (e) => {
+  const handleKanjiFirstChange = (e) => {
     se.set.play();
-    setKanji_1((kanji_1) => e.target.value);
+    setKanjiFirst(e.target.value);
   };
 
-  const changeKanji_2 = (e) => {
+  const handleKanjiSecondChange = (e) => {
     se.set.play();
-    setKanji_2((kanji_2) => e.target.value);
+    setKanjiSecond(e.target.value);
+  };
+
+  const handleOpacityChange = (e) => {
+    se.kako.play();
+    setOpacity(Number(e.target.value));
   };
 
   return (
     <>
       <main className="main">
         {/* asideのコンポーネント化もあるが、asideとarticleとの関わりは、このページを介した方がわかりやすいと判断し、冗長になりそうだが、ここで記述することにする。 */}
-        <aside className="no_print">
-          <h3>地味に助かる漢字プリント作成</h3>
-          <small>PCでの使用が前提です。スマホでの確認の場合は「PC版サイトで表示する」を選択してみてください。</small>
-          <form action="" style={{ border: "red solid 1px" }}>
-            <div style={{ margin: "5px" }}>
-              <p>学年選択<span style={{color:"red"}}>　はじめに選択して下さい。</span></p>
-              {INDEX.map((item) => {
+        <aside className="no_print" style={{ fontSize: "14px" }}>
+          <h3 style={{ fontSize: "18px", margin: "10px 0" }}>地味に助かる漢字プリント作成</h3>
+          <small style={{ fontSize: "12px" }}>PCでの使用が前提です。スマホでの確認の場合は「PC版サイトで表示する」を選択してみてください。</small>
+          <form action="" style={{ border: "#FF6600 solid 1px", padding: "5px" }}>
+            <div style={{ margin: "3px" }}>
+              <p style={{ fontSize: "14px", margin: "5px 0" }}>学年選択<span style={{color:"#FF6600", fontSize: "14px"}}>　はじめに選択して下さい。</span></p>
+              {GRADE_OPTIONS.map((gradeOption) => {
                 return (
-                  <label key={item} For={item}>
-                    <input onChange={changeGrade} type="radio" name="grade" id={item} value={item} />
-                    {item}年
+                  <label key={gradeOption} htmlFor={gradeOption} style={{ fontSize: "16px", marginRight: "8px", display: "inline-flex", alignItems: "center" }}>
+                    <input
+                      onChange={handleGradeChange}
+                      type="radio"
+                      name="grade"
+                      id={gradeOption}
+                      value={gradeOption}
+                      checked={grade === gradeOption}
+                      style={{ marginRight: "3px", transform: "scale(0.8)" }}
+                    />
+                    {gradeOption}年
                   </label>
                 );
               })}
             </div>
           </form>
-          <p style={{color:"red"}}>↓ここに漢字を入力して下さい！</p>
+          <p style={{color:"#FF6600", fontSize: "15px", margin: "8px 0 3px 0", fontWeight: "bold"}}>↓ここに漢字を入力して下さい！</p>
           <input
-            onChange={changeKanji_1}
-            style={{ width: "160px", height: "160px", fontSize: "100px", textAlign: "center" }}
+            onChange={handleKanjiFirstChange}
+            style={{ width: "120px", height: "120px", fontSize: "88px", textAlign: "center", margin: "2px" }}
             type="text"
-            name=""
-            id=""
+            value={kanjiFirst}
+            placeholder="漢"
           />
           <input
-            onChange={changeKanji_2}
-            style={{ width: "160px", height: "160px", fontSize: "100px", textAlign: "center" }}
+            onChange={handleKanjiSecondChange}
+            style={{ width: "120px", height: "120px", fontSize: "88px", textAlign: "center", margin: "2px" }}
             type="text"
-            name=""
-            id=""
+            value={kanjiSecond}
+            placeholder="字"
           />
           <br />
-          <label>
-            <input type="checkbox" name="" id="" onChange={changeOnkun} checked={isShow_onkun} />
+          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+            <input
+              type="checkbox"
+              onChange={() => handleDisplayOptionChange('onkun')}
+              checked={displayOptions.onkun}
+              style={{ marginRight: "5px", transform: "scale(0.8)" }}
+            />
             「音読み・訓読み」を分ける。
           </label>
-          <br />
-          <label>
-            <input type="checkbox" name="" id="" onChange={changeBushu} checked={isShow_bushu} />
+          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+            <input
+              type="checkbox"
+              onChange={() => handleDisplayOptionChange('bushu')}
+              checked={displayOptions.bushu}
+              style={{ marginRight: "5px", transform: "scale(0.8)" }}
+            />
             「部首・部首名」を表示する。
           </label>
-          <br />
-          <label>
-            <input type="checkbox" name="" id="" onChange={changeNaritachi} checked={isShow_naritachi} />
+          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+            <input
+              type="checkbox"
+              onChange={() => handleDisplayOptionChange('naritachi')}
+              checked={displayOptions.naritachi}
+              style={{ marginRight: "5px", transform: "scale(0.8)" }}
+            />
             「意味や成り立ち」を表示する。
           </label>
-          <br />
-          <label>
-            <input type="checkbox" name="" id="" onChange={changeImi} checked={isShow_imi} />
+          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+            <input
+              type="checkbox"
+              onChange={() => handleDisplayOptionChange('imi')}
+              checked={displayOptions.imi}
+              style={{ marginRight: "5px", transform: "scale(0.8)" }}
+            />
             「漢字の意味」を表示する。
           </label>
-          <br />
-          <label>
-            <input type="checkbox" name="" id="" onChange={changeKurikaeshi} checked={isShow_kurikaeshi} />
+          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+            <input
+              type="checkbox"
+              onChange={() => handleDisplayOptionChange('kurikaeshi')}
+              checked={displayOptions.kurikaeshi}
+              style={{ marginRight: "5px", transform: "scale(0.8)" }}
+            />
             書き写しを2段にする。
           </label>
-          <br />
-          <label>
-            <input type="checkbox" name="" id="" onChange={changeJukugo} checked={isShow_jukugo} />
+          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+            <input
+              type="checkbox"
+              onChange={() => handleDisplayOptionChange('jukugo')}
+              checked={displayOptions.jukugo}
+              style={{ marginRight: "5px", transform: "scale(0.8)" }}
+            />
             熟語づくりを2段にする。
           </label>
-          <br />
-          <label>
-            <input type="checkbox" name="" id="" onChange={changeTanbun} checked={isShow_tanbun} />
+          <label style={{ fontSize: "14px", display: "flex", alignItems: "center", margin: "3px 0" }}>
+            <input
+              type="checkbox"
+              onChange={() => handleDisplayOptionChange('tanbun')}
+              checked={displayOptions.tanbun}
+              style={{ marginRight: "5px", transform: "scale(0.8)" }}
+            />
             短文づくりを2段にする。
           </label>
-          <br />
-          マスの大きさ
-          <input
-            onChange={changeSize}
-            style={{ width: "8rem", height: "4rem", fontSize: "2rem", textAlign: "center" }}
-            type="number"
-            step="0.01"
-            value={Size}
-          />
-          cm
-          <br />
-          左右
-          <input
-            onChange={changeIchiX}
-            style={{ width: "6rem", height: "3rem", fontSize: "1.5rem", textAlign: "center" }}
-            type="number"
-            step=".5"
-            value={ichiX}
-          />
-          上下
-          <input
-            onChange={changeIchiY}
-            style={{ width: "6rem", height: "3rem", fontSize: "1.5rem", textAlign: "center" }}
-            type="number"
-            step=".5"
-            value={ichiY}
-          />
-          <br />
-          <button
-            onClick={() => {
-              se.set.play();
-              const result = window.confirm("印刷ダイアログを開きますか？");
-              if (result === false) return;
-              window.print();
-            }}
-          >
-            印刷
-          </button>
-          <button
-            onClick={() => {
-              se.set.play();
-              const result = window.confirm("再読み込みして　リセットしますか？");
-              if (result === false) return;
-              location.reload();
-            }}
-          >
-            再読み込み
-          </button>
-          <br />
-          文字の濃さ
-          <input
-            style={{ width: "20rem" }}
-            onChange={(e) => {
-              se.kako.play();
-              setOpacity((opacity) => Number(e.target.value));
-            }}
-            max="1"
-            min="0"
-            step="0.01"
-            type="range"
-            name=""
-            id=""
-          />
+          <div style={{ fontSize: "16px", margin: "5px 0" }}>
+            マスの大きさ
+            <input
+              onChange={handleSizeChange}
+              style={{ width: "6rem", height: "2.5rem", fontSize: "16px", textAlign: "center", margin: "0 5px" }}
+              type="number"
+              step="0.01"
+              value={size}
+            />
+            cm
+          </div>
+          <div style={{ fontSize: "16px", margin: "5px 0" }}>
+            左右
+            <input
+              onChange={handlePositionXChange}
+              style={{ width: "4rem", height: "2rem", fontSize: "14px", textAlign: "center", margin: "0 5px" }}
+              type="number"
+              step=".5"
+              value={positionX}
+            />
+            上下
+            <input
+              onChange={handlePositionYChange}
+              style={{ width: "4rem", height: "2rem", fontSize: "14px", textAlign: "center", margin: "0 5px" }}
+              type="number"
+              step=".5"
+              value={positionY}
+            />
+          </div>
+          <div style={{ margin: "5px 0" }}>
+            <button
+              onClick={() => {
+                se.set.play();
+                const result = window.confirm("印刷ダイアログを開きますか？");
+                if (result === false) return;
+                window.print();
+              }}
+              style={{ fontSize: "18px", padding: "2px 6px", margin: "3px" }}
+            >
+              印刷
+            </button>
+            <button
+              onClick={() => {
+                se.set.play();
+                const result = window.confirm("再読み込みして　リセットしますか？");
+                if (result === false) return;
+                location.reload();
+              }}
+              style={{ fontSize: "18px", padding: "2px 6px", margin: "3px" }}
+            >
+              再読み込み
+            </button>
+          </div>
+          <div style={{ fontSize: "16px", margin: "5px 0" }}>
+            文字の濃さ
+            <input
+              style={{ width: "15rem", display: "block", margin: "2px 0" }}
+              onChange={handleOpacityChange}
+              max="1"
+              min="0"
+              step="0.01"
+              type="range"
+              value={opacity}
+            />
+          </div>
         </aside>
 
         <article className="print_pages">
-          <Title g={grade} size={Size}></Title>
+          <Title grade={grade} size={size} />
           <div style={{ display: "flex", alignContent: "space-between" }}>
-            {PAGE.map((page) => {
+            {PAGES.map((page) => {
               return (
                 <div key={page} style={{ marginInlineEnd: "0.5cm" }}>
                   <div style={{ display: "flex" }}>
                     <TopMasu
-                      g={grade}
-                      size={Size}
-                      k_1={kanji_1}
-                      k_2={kanji_2}
-                      i={page}
-                      o={opacity}
-                      t={ichiY}
-                      r={ichiX}
-                    ></TopMasu>
+                      grade={grade}
+                      size={size}
+                      kanjiFirst={kanjiFirst}
+                      kanjiSecond={kanjiSecond}
+                      pageIndex={page}
+                      opacity={opacity}
+                      positionY={positionY}
+                      positionX={positionX}
+                    />
 
-                    <Yomikata g={grade} size={Size} show={isShow_onkun}></Yomikata>
+                    <Yomikata grade={grade} size={size} show={displayOptions.onkun} />
 
-                    {isShow_bushu === true ? <Bushu g={grade} size={Size}></Bushu> : null}
+                    {displayOptions.bushu && <Bushu grade={grade} size={size} />}
 
-                    <Kakusu g={grade} size={Size}></Kakusu>
+                    <Kakusu grade={grade} size={size} />
                   </div>
 
-                  {isShow_naritachi === true ? <Naritachi g={grade} size={Size}></Naritachi> : null}
+                  {displayOptions.naritachi && <Naritachi grade={grade} size={size} />}
 
-                  {isShow_imi === true ? <Imi g={grade} size={Size}></Imi> : null}
+                  {displayOptions.imi && <Imi grade={grade} size={size} />}
 
                   <Kurikaeshi
-                    g={grade}
-                    size={Size}
-                    k_1={kanji_1}
-                    k_2={kanji_2}
-                    i={page}
-                    o={opacity}
-                    t={ichiY}
-                    r={ichiX}
-                  ></Kurikaeshi>
+                    grade={grade}
+                    size={size}
+                    kanjiFirst={kanjiFirst}
+                    kanjiSecond={kanjiSecond}
+                    pageIndex={page}
+                    opacity={opacity}
+                    positionY={positionY}
+                    positionX={positionX}
+                  />
 
-                  {isShow_kurikaeshi === true ? (
+                  {displayOptions.kurikaeshi && (
                     <Kurikaeshi
-                      size={Size}
-                      k_1={kanji_1}
-                      k_2={kanji_2}
-                      i={page}
-                      o={opacity}
-                      t={ichiY}
-                      r={ichiX}
-                    ></Kurikaeshi>
-                  ) : null}
+                      size={size}
+                      kanjiFirst={kanjiFirst}
+                      kanjiSecond={kanjiSecond}
+                      pageIndex={page}
+                      opacity={opacity}
+                      positionY={positionY}
+                      positionX={positionX}
+                    />
+                  )}
 
-                  <Jukugo g={grade} size={Size}></Jukugo>
+                  <Jukugo grade={grade} size={size} />
 
-                  {isShow_jukugo === true ? <Jukugo size={Size}></Jukugo> : null}
+                  {displayOptions.jukugo && <Jukugo size={size} />}
 
-                  <Tanbun g={grade} size={Size}></Tanbun>
+                  <Tanbun grade={grade} size={size} />
 
-                  {isShow_tanbun === true ? <Tanbun g={grade} size={Size}></Tanbun> : null}
+                  {displayOptions.tanbun && <Tanbun grade={grade} size={size} />}
                 </div>
               );
             })}

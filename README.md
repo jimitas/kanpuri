@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 地味に助かる漢字プリント作成
 
-## Getting Started
+PCで使用する漢字学習プリント作成アプリケーションです。学年に応じた漢字練習プリントを簡単に作成できます。
 
-First, run the development server:
+## 機能
+
+### 基本機能
+- **学年選択**: 1年生〜6年生に対応
+- **漢字入力**: 2つの漢字を同時に練習可能
+- **プリント生成**: A4サイズでの印刷に最適化
+
+### カスタマイズ機能
+- **表示項目の切り替え**
+  - 音読み・訓読みの分離表示
+  - 部首・部首名の表示
+  - 漢字の意味表示
+  - 意味や成り立ちの表示
+  - 書き写し練習を2段表示
+  - 熟語づくりを2段表示
+  - 短文づくりを2段表示
+
+- **レイアウト調整**
+  - マスの大きさ調整
+  - 漢字の位置調整（左右・上下）
+  - なぞり文字の濃さ調整
+
+### 対応学年別機能
+- **1〜2年生**: ひらがな表記対応
+- **3年生以上**: 音読み・訓読み分離、部首表示対応
+
+## 使用方法
+
+1. **学年を選択**: まず最初に対象学年を選択してください
+2. **漢字を入力**: 練習したい漢字を2つまで入力
+3. **表示項目を設定**: 必要な項目のチェックボックスを選択
+4. **レイアウト調整**: マスサイズや位置を微調整
+5. **印刷**: 印刷ボタンでプリント出力
+
+## 技術仕様
+
+- **フレームワーク**: Next.js 13.1.1
+- **言語**: React 18.2.0, JavaScript
+- **音声**: Howler.js 2.2.3
+- **スタイリング**: CSS Modules
+- **フォント**: UD デジタル教科書体対応
+
+## 開発・実行
 
 ```bash
+# 依存関係のインストール
+npm install
+
+# 開発サーバー起動
 npm run dev
-# or
-yarn dev
+
+# プロダクションビルド
+npm run build
+
+# プロダクション起動
+npm start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 注意事項
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+- PCでの使用を前提としています
+- スマートフォンで確認する場合は「PC版サイトで表示」を選択してください
+- 最適な印刷結果を得るには、ブラウザの印刷設定を調整してください
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+## ライセンス
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+このプロジェクトは教育目的で作成されています。
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+---
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+**開発者**: jimitas
+**プロジェクト**: 地味に助かるシリーズ

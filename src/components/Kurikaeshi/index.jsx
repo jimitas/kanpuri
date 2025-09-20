@@ -1,22 +1,15 @@
 export function Kurikaeshi(props) {
-  const Size = props.size;
-  const grade = props.g;
-  const index = props.i;
-  const ichiX = props.r;
-  const ichiY = props.t;
-  const kanji_1 = props.k_1;
-  const kanji_2 = props.k_2;
-  const opacity = props.o;
+  const { size, grade, pageIndex, positionX, positionY, kanjiFirst, kanjiSecond, opacity } = props;
   const MASU_INDEX = [1, 2, 3, 4, 5, 6, 7];
   return (
-    <div style={{ paddingBlockStart: `${Size * 0.1}cm` }}>
+    <div style={{ paddingBlockStart: `${size * 0.1}cm` }}>
       {grade > 3 ? (
         <div>○筆順や形に気をつけて、ていねいに練習しましょう。</div>
-      ) : grade == 3 ? (
+      ) : grade === 3 ? (
         <div>○書きじゅんや形に気をつけて、ていねいに練習しましょう。</div>
-      ) : grade == 2 ? (
+      ) : grade === 2 ? (
         <div>○書きじゅんや形に気をつけて、ていねいに書きましょう。</div>
-      ) : grade == 1 ? (
+      ) : grade === 1 ? (
         <div>〇かきじゅんや　かたちに　気をつけて、ていねいに　かきましょう。</div>
       ) : (
         <div>　</div>
@@ -28,31 +21,33 @@ export function Kurikaeshi(props) {
             <div
               key={MASU_INDEX}
               className={MASU_INDEX === 1 ? "masu2_top" : "masu2"}
-              style={{ width: `${Size}cm`, height: `${Size}cm` }}
+              style={{ width: `${size}cm`, height: `${size}cm` }}
             >
-              {MASU_INDEX < 4 && index === 1 ? (
+              {MASU_INDEX < 4 && pageIndex === 1 ? (
                 <div
                   className="nazori_2"
                   style={{
-                    fontSize: `${Size}cm`,
-                    right: `${ichiX - 7}px`,
-                    top: `${ichiY - 2}px`,
+                    fontSize: `${size}cm`,
+                    right: `${positionX - 24}px`,
+                    top: `${positionY - 2}px`,
                     opacity: `${opacity}`,
+                    fontFamily: '"UD デジタル 教科書体 NK-R", "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif',
                   }}
                 >
-                  {kanji_1}
+                  {kanjiFirst}
                 </div>
-              ) : MASU_INDEX < 4 && index === 2 ? (
+              ) : MASU_INDEX < 4 && pageIndex === 2 ? (
                 <div
                   className="nazori_2"
                   style={{
-                    fontSize: `${Size}cm`,
-                    right: `${ichiX - 7}px`,
-                    top: `${ichiY - 2}px`,
+                    fontSize: `${size}cm`,
+                    right: `${positionX - 24}px`,
+                    top: `${positionY - 2}px`,
                     opacity: `${opacity}`,
+                    fontFamily: '"UD デジタル 教科書体 NK-R", "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif',
                   }}
                 >
-                  {kanji_2}
+                  {kanjiSecond}
                 </div>
               ) : null}
               {MASU_INDEX < 4 ? <div className="xLine"></div> : null}

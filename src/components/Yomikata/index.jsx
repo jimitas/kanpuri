@@ -1,17 +1,15 @@
 export function Yomikata(props) {
-  const Size = props.size;
-  const grade = props.g;
-  const show = props.show;
+  const { size, grade, show } = props;
 
   return (
-    <div style={{ marginInlineStart: `${Size * 0.25}cm` }}>
-      {grade == 1 ? <div>よみかた</div> : <div>読み方</div>}
+    <div style={{ marginInlineStart: `${size * 0.25}cm` }}>
+      {grade === 1 ? <div>よみかた</div> : <div>読み方</div>}
 
       <div
         className="yomikata relative"
         style={{
-          width: `${Size * 1.5}cm`,
-          height: `${Size * 2.5}cm`,
+          width: `${size * 1.5}cm`,
+          height: `${size * 2.5}cm`,
         }}
       >
         {show === true ? (

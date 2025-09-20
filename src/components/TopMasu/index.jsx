@@ -1,44 +1,40 @@
 export function TopMasu(props) {
-  const Size = props.size;
-  const index = props.i;
-  const ichiX = props.r;
-  const ichiY = props.t;
-  const kanji_1 = props.k_1;
-  const kanji_2 = props.k_2;
-  const opacity = props.o;
+  const { size, pageIndex, positionX, positionY, kanjiFirst, kanjiSecond, opacity } = props;
 
   return (
     <div
       className="masu relative"
       style={{
-        marginBlockStart: `${Size * 0.25}cm`,
-        width: `${Size * 1.5}cm`,
-        height: `${Size * 1.5}cm`,
+        marginBlockStart: `${size * 0.25}cm`,
+        width: `${size * 1.5}cm`,
+        height: `${size * 1.5}cm`,
       }}
     >
-      {index === 1 ? (
+      {pageIndex === 1 ? (
         <div
           className="nazori"
           style={{
-            fontSize: `${Size * 1.5}cm`,
-            right: `${ichiX * 1.5 - 10}px`,
-            top: `${ichiY * 1.5 - 3}px`,
+            fontSize: `${size * 1.5}cm`,
+            right: `${positionX * 1.5 - 36}px`,
+            top: `${positionY * 1.5 - 3}px`,
             opacity: `${opacity}`,
+            fontFamily: '"UD デジタル 教科書体 NK-R", "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif',
           }}
         >
-          {kanji_1}
+          {kanjiFirst}
         </div>
       ) : (
         <div
           className="nazori"
           style={{
-            fontSize: `${Size * 1.5}cm`,
-            right: `${ichiX - 10}px`,
-            top: `${ichiY - 3}px`,
+            fontSize: `${size * 1.5}cm`,
+            right: `${positionX - 36}px`,
+            top: `${positionY - 3}px`,
             opacity: `${opacity}`,
+            fontFamily: '"UD デジタル 教科書体 NK-R", "ヒラギノ角ゴ ProN W3", HiraKakuProN-W3, 游ゴシック, "Yu Gothic", メイリオ, Meiryo, Verdana, Helvetica, Arial, sans-serif',
           }}
         >
-          {kanji_2}
+          {kanjiSecond}
         </div>
       )}
       <div className="xLine"></div>
